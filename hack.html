@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>dtar's HTML Runner</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.7/purify.min.js"></script>
+</head>
+<body>
+  <label for="html">Enter HTML Code:</label>
+  <textarea id="html" rows="4" cols="50"></textarea>
+  <button onclick="runHtml()">Run Code</button>
+  <div id="output"></div>
+  <script>
+    function runHtml() {
+      var dtarHTML = document.getElementById('html').value;
+      var cleanHtml = DOMPurify.sanitize(dtarHTML);
+      document.getElementById('output').innerHTML = cleanHtml;
+    }
+  </script>
+</body>
+</html>
