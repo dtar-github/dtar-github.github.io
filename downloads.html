@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>dtar's Game Downloads</title>
+    <title>dtar's Downloads</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         .button {
@@ -45,7 +45,7 @@
 </head>
 <body>
     <h1 class="title">dtar's Game Downloads</h1>
-    <hr>
+    <br>
     <a href="spaceship.html" download="spaceship.html" class="button spaceship">Spaceship Battle</a>
     <br>
     <br>
@@ -56,5 +56,21 @@
     <br>
     <br>
     <a href="geometry.html" download="geometry.html" class="button geometry"\>Evil Geometry Dash</a>
+    <hr>
+    <h2>Download dtar's HTML Runner</h2>
+    <br>
+    <button id="downloadButton">Download HTML</button>
+    <script>
+        document.getElementById('downloadButton').addEventListener('click', function() {
+            var htmlCode = "<!DOCTYPE html><html><head><title>dtar's HTML Runner</title><style>#text{resize:none;}</style></head><body><label for=\"text\">Enter HTML Code:</label><br><textarea id=\"text\" rows=\"4\" cols=\"50\"></textarea><button onclick=\"document.getElementById('result').innerHTML=document.getElementById('text').value;\">Run Code</button><hr><div id=\"result\"></div><script>function dtarHTML(){var html=document.getElementById('text').value;document.getElementById('result').innerHTML=html;}\<\/script></body></html>";
+            var blob = new Blob([htmlCode], { type: 'text/html' });
+            var a = document.createElement('a');
+            a.download = 'hack.html';
+            a.href = URL.createObjectURL(blob);
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    </script>
 </body>
 </html>
