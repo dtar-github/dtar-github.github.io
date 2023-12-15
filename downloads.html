@@ -36,6 +36,10 @@
             background-color: #ff0000;
             color: #000000;
         }
+        .ti {
+            background-color: #00ffea;
+            color: #000000;
+        }
     </style>
     <script>
         document.addEventListener('contextmenu', function (e) {
@@ -44,7 +48,7 @@
     </script>
 </head>
 <body>
-    <h1 class="title">dtar's Game Downloads</h1>
+    <h1>dtar's Game Downloads</h1>
     <br>
     <a href="spaceship.html" download="spaceship.html" class="button spaceship">Spaceship Battle</a>
     <br>
@@ -55,11 +59,29 @@
     <a href="robot.html" download="robot.html" class="button robot">Robotic Adventures</a>
     <br>
     <br>
-    <a href="geometry.html" download="geometry.html" class="button geometry"\>Evil Geometry Dash</a>
+    <a href="geometry.html" download="geometry.html" class="button geometry">Evil Geometry Dash</a>
     <hr>
-    <h2>Download dtar's HTML Runner</h2>
+    <h2>dtar's TI-84 Games</h2>
+    <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/FLAPPY-BIRD.8xp" class="button ti">Flappy Bird</a>
+    <hr>
+    <h3>Other Programs</h3>
+    <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/TIMER.8xp" class="button ti">Timer</a>
+    <br>
+    <br>
+    <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/POINTS-LINES.8xp" class="button ti">Points and Lines</a>
+    <br>
+    <h4>Points and Lines Extensions</h4>
+    ---
+    <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/QUADRATIC-FORMULA.8xp" class="button ti">Quadratic Formula</a>
+    <br>
+    <br>
+    ---
+    <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/TRIANGLES.8xp" class="button ti">Triangles</a>
+    <hr>
+    <h1>Download dtar's HTML Runner</h1>
     <br>
     <button id="downloadButton">Download HTML</button>
+    <br><br><br><br><br><br><br><br><br>
     <script>
         document.getElementById('downloadButton').addEventListener('click', function() {
             var htmlCode = "<!DOCTYPE html><html><head><title>dtar's HTML Runner</title><style>#container {display: flex;}#text {resize: none;}#resizeLabel {margin-left: 10px;}</style></head><body><div id=\"container\"><div><label for=\"text\">Enter HTML Code:</label><br><textarea id=\"text\" rows=\"4\" cols=\"50\"></textarea></div><div><br><input type=\"checkbox\" id=\"resizeSwitch\" onchange=\"toggleResize()\"></div></div><button onclick=\"downloadHTML()\">Download HTML</button><button onclick=\"document.getElementById('result').innerHTML=document.getElementById('text').value;\">Run Code</button><hr><div id=\"result\"></div><script>function dtarHTML(){var html=document.getElementById('text').value;document.getElementById('result').innerHTML=html;}function downloadHTML() {var htmlContent = document.getElementById('text').value;var blob = new Blob([htmlContent], { type: 'text/html' });var a = document.createElement('a');a.href = window.URL.createObjectURL(blob);a.download = 'download.html';document.body.appendChild(a);a.click();document.body.removeChild(a);}function toggleResize() {var textArea = document.getElementById('text');var resizeSwitch = document.getElementById('resizeSwitch');textArea.style.resize = resizeSwitch.checked ? 'both' : 'none';}<\/script></body></html>";
