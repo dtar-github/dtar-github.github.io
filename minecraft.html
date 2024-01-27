@@ -9,13 +9,17 @@
         }
         .button {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 10px 40px;
             border-radius: 4px;
             cursor: pointer;
             text-decoration: none;
             border: 2px solid #492400;
             background-color: #008c0e;
             color: #492400;
+        }
+        .youtube {
+            background-color: #d90000;
+            color: #ffffff;
         }
         nav {
             text-align: center;
@@ -29,6 +33,10 @@
             margin: 0 5px;
             border-radius: 4px;
         }
+        .server {
+            display: flex;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
@@ -39,6 +47,22 @@
         <a href="/minecraft">Minecraft</a>
     </nav>
     <h1>dtar in Minecraft</h1>
+    <div style="padding:40px">
+        <a href="https://www.youtube.com/@devinredstone" class="button youtube"><h2>My YouTube</h2></a>
+        <a href="/commands" class="button" style="position:absolute;right:40px"><h2>My Minecraft Commands</h2></a>
+    </div>
+    <div class="server">
+    <button onclick="server()" class="button"><h2>My Minecraft Server</h2></button>
+    </div>
     <br>
+    <div id="Display" class="server"></div>
+    <script>
+        function server() {
+            var displayArea = document.getElementById("Display");
+            if (displayArea) {
+                displayArea.innerHTML = "Coming Soon!";
+            }
+        }
+    </script>
 </body>
 </html>
