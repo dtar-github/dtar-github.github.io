@@ -12,6 +12,9 @@
             text-decoration: none;
             border: 2px solid #000000;
         }
+        #downloadButton {
+            margin-bottom: 300px;
+        }
         .site {
             background-color: #7b7b7b;
             color: #ffffff;
@@ -82,11 +85,17 @@
     <h2>dtar's TI-84 Games</h2>
     <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/FLAPPY-BIRD.8xp" class="button ti">Flappy Bird</a>
     <p>Runs Flappy Bird on the graph screen.</p>
-    <p>Before starting the program, make sure that you have turned off the y= equations on your calculator.</p>
+    <p>Before starting the program, make sure that you have turned off the <b>y=</b> equations on your calculator.</p>
     <hr>
     <h3>Other Programs</h3>
     <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/TIMER.8xp" class="button ti">Timer</a>
     <p>Runs a timer or stopwatch. The time may not be exact.</p>
+    <hr>
+    <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/OPTICS.8xp" class="button ti">Optics</a>
+    <p>Calculates where an object would be seen through a mirror or lens.</p>
+    <hr>
+    <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/NOTECARDS.8xp" class="button ti">Notecards</a>
+    <p>Simulates notecards. Press <b>New</b> and type in what you want to be on the front and back of the notecard. Press View to view the notecards. Uses <i>Encode</i> and <i>Decode</i>.</p>
     <hr>
     <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/POINTS-LINES.8xp" class="button ti">Points and Lines</a>
     <p>Calculates formulas for points and lines.</p>
@@ -99,12 +108,15 @@
     <br>
     -----
     <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/TRIANGLES.8xp" class="button ti">Triangles</a>
-    <p>Calculates statistics of a triangle. Only works as an extension for Points and Lines</p>
+    <p>Calculates statistics of a triangle. Only works as an extension for Points and Lines.</p>
+    <hr>
+    <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/ENCODE.8xp" class="button ti">Encode</a>
+    <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/ENCODE.8xp" class="button ti">Decode</a>
+    <p>Encodes and decodes <b>String 0</b> into <b>Matrix [A]</b></p>
     <hr>
     <h1>Download dtar's HTML Runner</h1>
     <br>
     <button id="downloadButton">Download HTML</button>
-    <br><br><br><br><br><br><br><br><br>
     <script>
         document.getElementById('downloadButton').addEventListener('click', function() {
             var htmlCode = "<!DOCTYPE html><html><head><title>dtar's HTML Runner</title><style>#container {display: flex;}#text {resize: none;}#resizeLabel {margin-left: 10px;}</style></head><body><div id=\"container\"><div><label for=\"text\">Enter HTML Code:</label><br><textarea id=\"text\" rows=\"4\" cols=\"50\"></textarea></div><div><br><input type=\"checkbox\" id=\"resizeSwitch\" onchange=\"toggleResize()\"></div></div><button onclick=\"downloadHTML()\">Download HTML</button><button onclick=\"document.getElementById('result').innerHTML=document.getElementById('text').value;\">Run Code</button><hr><div id=\"result\"></div><script>function dtarHTML(){var html=document.getElementById('text').value;document.getElementById('result').innerHTML=html;}function downloadHTML() {var htmlContent = document.getElementById('text').value;var blob = new Blob([htmlContent], { type: 'text/html' });var a = document.createElement('a');a.href = window.URL.createObjectURL(blob);a.download = 'download.html';document.body.appendChild(a);a.click();document.body.removeChild(a);}function toggleResize() {var textArea = document.getElementById('text');var resizeSwitch = document.getElementById('resizeSwitch');textArea.style.resize = resizeSwitch.checked ? 'both' : 'none';}<\/script></body></html>";
