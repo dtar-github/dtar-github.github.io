@@ -39,7 +39,7 @@
             background-color: #008c0e;
             color: #492400;
         }
-        div {
+        .about {
             float: right;
             width: 30%;
             margin: 10px;
@@ -58,6 +58,77 @@
             margin: 0 5px;
             border-radius: 4px;
         }
+        .dtar {
+            border: 3px solid;
+            border-radius: 10px;
+            padding: 10px;
+            width: 70px;
+            position: absolute;
+            top: 100px;
+            left: 80%;
+        }
+        span {
+            position:relative;
+            font-size:30px
+        }
+        .d {
+            color:red;
+            animation:d 10s infinite linear
+        }
+        .t {
+            color:orange;
+            animation:t 10s infinite linear
+        }
+        .a {
+            color:green;
+            animation:a 10s infinite linear
+        }
+        .r {
+            color:blue;
+            animation:r 10s infinite linear
+        }
+        @keyframes d {
+            0% {top:0px;left:0px}
+            1% {top:-13px;left:0px}
+            2% {top:-13px;left:52px}
+            3% {top:13px;left:52px}
+            5% {top:13px;left:38px}
+            7% {top:13px;left:19px}
+            9% {top:13px;left:0px}
+            10% {top:0px}
+        }
+        @keyframes t {
+            0% {top:0px;left:0px}
+            1% {top:13px;left:0px}
+            2% {top:13px;left:-13px}
+            4% {top:-13px;left:-13px}
+            5% {top:-13px;left:39px}
+            6% {top:13px;left:39px}
+            7% {top:13px;left:22px}
+            9% {top:13px;left:0px}
+            10% {top:0px}
+        }
+        @keyframes a {
+            0% {top:0px;left:0px}
+            1% {top:13px;left:0px}
+            2% {top:13px;left:-13px}
+            5% {top:13px;left:-34px}
+            6% {top:-13px;left:-34px}
+            7% {top:-13px;left:22px}
+            8% {top:13px;left:22px}
+            9% {top:13px;left:0px}
+            10% {top:0px}
+        }
+        @keyframes r {
+            0% {top:0px;left:0px}
+            1% {top:13px;left:0px}
+            2% {top:13px;left:-13px}
+            5% {top:13px;left:-33px}
+            7% {top:13px;left:-53px}
+            8% {top:-13px;left:-53px}
+            9% {top:-13px;left:0px}
+            10% {top:0px}
+        }
     </style>
 </head>
 <body>
@@ -67,12 +138,17 @@
         <a href="/downloads">Downloads</a>
         <a href="/minecraft">Minecraft</a>
     </nav>
+    <div class="dtar">
+        <b>
+            <span class=d>d</span> <span class=t>t</span> <span class=a>a</span> <span class=r>r</span>
+        </b>
+    </div>
     <h1>dtar Homepage!</h1>
     <a href="https://scratch.mit.edu/users/dtar" class="button scratch">My Scratch</a>
     <a href="https://youtube.com/@devinredstone" class="button youtube">My YouTube</a>
     <a href="https://github.com/dtar-github" class="button github">My GitHub</a>
     <br>
-    <div>
+    <div class="about">
         <h2>About Me</h2>
         <p>I like to code, solve rubik's cubes, and do calculus. I just started coding TI Basic and I already made <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/blob/main/FLAPPY-BIRD.8xp">flappy bird</a>! My YouTube channel is <a href="https://www.youtube.com/@devinredstone">DevinRedstone</a> and I make redstone machines such as piston doors or other contraptions. On <a href="https://github.com/dtar-github">github</a>, I try to share all the latest versions of what I'm working on, such as TI Basic or chrome extensions.</p>
     </div>
