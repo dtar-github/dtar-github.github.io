@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>dtar Homepage</title>
+    <title>dtar Minecraft</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         h1 {
@@ -34,8 +34,25 @@
             border-radius: 4px;
         }
         .server {
-            display: flex;
-            justify-content: center;
+            margin-left: calc(50% - 130px);
+        }
+        .display {
+            border: 1px solid;
+            border-radius: 40px;
+            padding: 10px;
+            width: 250px;
+            text-align: center;
+        }
+        @keyframes display {
+            from {height:0;opacity:0;}
+            to {height:220px;opacity:1;}
+        }
+        .link {
+            border: 1px solid;
+            border-radius: 5px;
+            padding: 5px;
+            width: 170px;
+            margin-left: 35px;
         }
     </style>
 </head>
@@ -52,17 +69,20 @@
         <a href="/commands" class="button" style="position:absolute;right:40px"><h2>My Minecraft Commands</h2></a>
     </div>
     <div class="server">
-    <button onclick="server()" class="button"><h2>My Minecraft Server</h2></button>
+        <button onclick="server()" class="button"><h2>My Minecraft Server</h2></button>
+        <br><br>
+        <div id="Display"></div>
     </div>
-    <br>
-    <div id="Display" class="server"></div>
     <script>
         function server() {
             var displayArea = document.getElementById("Display");
             if (displayArea) {
-                displayArea.innerHTML = "Server Address: DevRedsCraft.aternos.me";
+                displayArea.innerHTML = "<div class=\"display\">Server Address: DevRedsCraft.aternos.me<br><button onclick=\"copy()\">Copy</button><br><br><div class=\"link\"><a href=\"/server\">Server Homepage</a></div></div>";
             }
         }
+        function copy() {
+      navigator.clipboard.writeText("DevRedsCraft.aternos.me")
+    }
     </script>
 </body>
 </html>
