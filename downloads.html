@@ -12,9 +12,6 @@
             text-decoration: none;
             border: 2px solid #000000;
         }
-        #downloadButton {
-            margin-bottom: 300px;
-        }
         .site {
             background-color: #7b7b7b;
             color: #ffffff;
@@ -55,6 +52,30 @@
             margin: 0 5px;
             border-radius: 4px;
         }
+        .folder {
+            border: 1px solid;
+            border-radius: 5px;
+            padding: 10px;
+            width: 50%;
+        }
+        .folder-content {
+            display: none;
+            animation: folderOpen .5s;
+        }
+        .folder-toggle {
+            cursor: pointer;
+        }
+        @keyframes folderOpen {
+            from {height:0;opacity:0;}
+            to {height:220px;opacity:1;}
+        }
+        .content {
+            margin-left: 50px;
+            margin-bottom: 300px;
+        }
+        hr {
+            margin-left: -35px;
+        }
     </style>
     <script>
         document.addEventListener('contextmenu', function (e) {
@@ -69,6 +90,7 @@
         <a href="/downloads">Downloads</a>
         <a href="/minecraft">Minecraft</a>
     </nav>
+    <div class="content">
     <h1>dtar's Game Downloads</h1>
     <br>
     <a href="spaceship.html" download="spaceship.html" class="button spaceship">Spaceship Battle</a>
@@ -99,16 +121,20 @@
     <hr>
     <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/POINTS-LINES.8xp" class="button ti">Points and Lines</a>
     <p>Calculates formulas for points and lines.</p>
-    <br>
-    <h4>Points and Lines Extensions</h4>
-    -----
-    <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/QUADRATIC-FORMULA.8xp" class="button ti">Quadratic Formula</a>
-    <p>Calculates statistics of a parabola. Only works as an extension for Points and Lines.</p>
-    <br>
-    <br>
-    -----
-    <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/TRIANGLES.8xp" class="button ti">Triangles</a>
-    <p>Calculates statistics of a triangle. Only works as an extension for Points and Lines.</p>
+    <div class="folder">
+        <button class="folder-toggle" onclick="toggleFolder()"><b>Points and Lines Extensions</b></button>
+        <div class="folder-content" id="folder-content">
+            <br>
+            -----
+            <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/QUADRATIC-FORMULA.8xp" class="button ti">Quadratic Formula</a>
+            <p>Calculates statistics of a parabola. Only works as an extension for Points and Lines.</p>
+            <br>
+            <br>
+            -----
+            <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/TRIANGLES.8xp" class="button ti">Triangles</a>
+            <p>Calculates statistics of a triangle. Only works as an extension for Points and Lines.</p>
+        </div>
+    </div>
     <hr>
     <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/ENCODE.8xp" class="button ti">Encode</a>
     <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/ENCODE.8xp" class="button ti">Decode</a>
@@ -117,6 +143,7 @@
     <h1>Download dtar's HTML Runner</h1>
     <br>
     <button id="downloadButton">Download HTML</button>
+    </div>
     <script>
         document.getElementById('downloadButton').addEventListener('click', function() {
             var htmlCode = "<!DOCTYPE html><html><head><title>dtar's HTML Runner</title><style>#container {display: flex;}#text {resize: none;}#resizeLabel {margin-left: 10px;}</style></head><body><div id=\"container\"><div><label for=\"text\">Enter HTML Code:</label><br><textarea id=\"text\" rows=\"4\" cols=\"50\"></textarea></div><div><br><input type=\"checkbox\" id=\"resizeSwitch\" onchange=\"toggleResize()\"></div></div><button onclick=\"downloadHTML()\">Download HTML</button><button onclick=\"document.getElementById('result').innerHTML=document.getElementById('text').value;\">Run Code</button><hr><div id=\"result\"></div><script>function dtarHTML(){var html=document.getElementById('text').value;document.getElementById('result').innerHTML=html;}function downloadHTML() {var htmlContent = document.getElementById('text').value;var blob = new Blob([htmlContent], { type: 'text/html' });var a = document.createElement('a');a.href = window.URL.createObjectURL(blob);a.download = 'download.html';document.body.appendChild(a);a.click();document.body.removeChild(a);}function toggleResize() {var textArea = document.getElementById('text');var resizeSwitch = document.getElementById('resizeSwitch');textArea.style.resize = resizeSwitch.checked ? 'both' : 'none';}<\/script></body></html>";
@@ -128,6 +155,14 @@
             a.click();
             document.body.removeChild(a);
         });
+        function toggleFolder() {
+        var folderContent = document.getElementById("folder-content");
+        if (folderContent.style.display !== "block") {
+            folderContent.style.display = "block";
+        } else {
+            folderContent.style.display = "none";
+        }
+        }
     </script>
 </body>
 </html>
