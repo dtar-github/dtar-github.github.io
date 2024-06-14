@@ -80,6 +80,12 @@
         hr {
             margin-left: -35px;
         }
+        .command {
+            border-radius: 5px;
+            padding: 5px;
+            background-color: #000000;
+            color: #ffffff
+        }
     </style>
     <script>
         document.addEventListener('contextmenu', function (e) {
@@ -108,7 +114,14 @@
     <br><br>
     <hr>
     <h2>dtar's BASH Games</h2>
+    <p>Only works on OS that can run BASH</p>
+    <p>The activation command will only work if you save the file you want to download to the Downloads folder</p>
+    <hr>
+    <br>
     <a href="2048" download="2048" class="button bash">2048</a>
+    <br><br>
+    Activate using this command in the terminal:
+    <a class="command">chmod +x Downloads/2048<a>
     <hr>
     <h2>dtar's TI-84 Games</h2>
     <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/FLAPPY-BIRD.8xp" class="button ti">Flappy Bird</a>
