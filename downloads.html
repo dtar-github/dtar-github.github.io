@@ -40,6 +40,10 @@
             background-color: #00ffea;
             color: #000000;
         }
+        .bash {
+            background-color: #000000;
+            color: #ffffff;
+        }
         nav {
             text-align: center;
             background-color: #333;
@@ -91,18 +95,20 @@
         <a href="/server">DevCraft</a>
     </nav>
     <div class="content">
-    <h1>dtar's Game Downloads</h1>
+    <h1>dtar's Scratch Game Downloads</h1>
+    <p>Packaged with TurboWarp</p>
     <br>
     <a href="spaceship.html" download="spaceship.html" class="button spaceship">Spaceship Battle</a>
-    <br>
-    <br>
+    <br><br>
     <a href="grapple.html" download="grapple.html" class="button grapple">Grapple Cat</a>
-    <br>
-    <br>
+    <br><br>
     <a href="robot.html" download="robot.html" class="button robot">Robotic Adventures</a>
-    <br>
-    <br>
+    <br><br>
     <a href="geometry.html" download="geometry.html" class="button geometry">Evil Geometry Dash</a>
+    <br><br>
+    <hr>
+    <h2>dtar's BASH Games</h2>
+    <a href="2048" download="2048" class="button bash">2048</a>
     <hr>
     <h2>dtar's TI-84 Games</h2>
     <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/FLAPPY-BIRD.8xp" class="button ti">Flappy Bird</a>
@@ -128,8 +134,7 @@
             -----
             <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/QUADRATIC-FORMULA.8xp" class="button ti">Quadratic Formula</a>
             <p>Calculates statistics of a parabola. Only works as an extension for Points and Lines.</p>
-            <br>
-            <br>
+            <br><br>
             -----
             <a href="https://github.com/dtar-github/TI-84-Plus-CE-Programs/raw/main/TRIANGLES.8xp" class="button ti">Triangles</a>
             <p>Calculates statistics of a triangle. Only works as an extension for Points and Lines.</p>
@@ -156,12 +161,12 @@
             document.body.removeChild(a);
         });
         function toggleFolder() {
-        var folderContent = document.getElementById("folder-content");
-        if (folderContent.style.display !== "block") {
-            folderContent.style.display = "block";
-        } else {
-            folderContent.style.display = "none";
-        }
+            var folderContent = document.getElementById("folder-content");
+            if (folderContent.style.display !== "block") {
+                folderContent.style.display = "block";
+            } else {
+                folderContent.style.display = "none";
+            }
         }
     </script>
 </body>
