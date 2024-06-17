@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redstone Generator</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        .hidden {
+            color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Redstone Generator</h1>
+    <input type="checkbox" id="usesolid" class="use" data-target="soliddisplay"><span id="soliddisplay" class="hidden"><input type="checkbox" id="solid" disabled> Solid</span><br>
+    <input type="checkbox" id="useredirect" class="use" data-target="redirectdisplay"><span id="redirectdisplay" class="hidden"><input type="checkbox" id="redirect" disabled> Redirects Redstone</span><br>
+    <input type="checkbox" id="usemove" class="use" data-target="movedisplay"><span id="movedisplay" class="hidden"><input type="checkbox" id="move" disabled> Moveable</span><br>
+    <input type="checkbox" id="useslip" class="use" data-target="slipdisplay"><span id="slipdisplay" class="hidden"><input type="checkbox" id="slip" disabled> Slippery</span><br>
+    <input type="checkbox" id="usebreak" class="use" data-target="breakdisplay"><span id="breakdisplay" class="hidden"><input type="checkbox" id="break" disabled> Breaks when Pushed</span><br>
+    <input type="checkbox" id="useoutput" class="use" data-target="outputdisplay"><span id="outputdisplay" class="hidden"><input type="checkbox" id="output" disabled> Can give an output without being powered</span><br>
+    <input type="checkbox" id="usecomparator" class="use" data-target="comparatordisplay"><span id="comparatordisplay" class="hidden"><input type="checkbox" id="comparator" disabled> Can Give Comparator Output without being powered</span><br>
+    <input type="checkbox" id="useobserver" class="use" data-target="observerdisplay"><span id="observerdisplay" class="hidden"><input type="checkbox" id="observer" disabled> Gives Observer Output When Powered</span><br>
+    <input type="checkbox" id="usesticky" class="use" data-target="stickydisplay"><span id="stickydisplay" class="hidden"><input type="checkbox" id="sticky" disabled> Sticky</span><br>
+    <input type="checkbox" id="usestorage" class="use" data-target="storagedisplay"><span id="storagedisplay" class="hidden"><input type="checkbox" id="storage" disabled> Can Store Items</span><br>
+    <button onclick="generate()">Generate</button>
+    <ul id="list"></ul>
+    <script>
+        const properties = [
+            { name: "Standard Building Block", solid: true, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false },
+            { name: "Redstone Dust", solid: false, redirect: true, move: true, slip: true, break: true, output: false, comparator: false, observer: true, sticky: false, storage: false },
+            { name: "Redstone Torch", solid: false, redirect: true, move: true, slip: true, break: true, output: true, comparator: true, observer: true, sticky: false, storage: false },
+            { name: "Redstone Block", solid: true, redirect: true, move: true, slip: false, break: false, output: true, comparator: true, observer: false, sticky: false, storage: false },
+            { name: "Redstone Repeater", solid: false, redirect: true, move: true, slip: true, break: true, output: false, comparator: false, observer: true, sticky: false, storage: false },
+            { name: "Redstone Comparator", solid: false, redirect: true, move: true, slip: true, break: true, output: false, comparator: false, observer: true, sticky: false, storage: false },
+            { name: "Target", solid: true, redirect: true, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false },
+            { name: "Copper Bulb", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: true, observer: true, sticky: false, storage: false },
+            { name: "Lever/Button/Presssure Plate", solid: false, redirect: true, move: true, slip: true, break: true, output: true, comparator: true, observer: false, sticky: false, storage: false },
+            { name: "Sculk Sensor", solid: false, redirect: true, move: false, slip: true, break: false, output: true, comparator: true, observer: false, sticky: false, storage: false },
+            { name: "Lectern", solid: false, redirect: true, move: false, slip: true, break: false, output: false, comparator: true, observer: false, sticky: false, storage: true },
+            { name: "Daylight Detector", solid: false, redirect: true, move: false, slip: true, break: false, output: true, comparator: true, observer: false, sticky: false, storage: false },
+            { name: "Lightning Rod", solid: false, redirect: true, move: false, slip: true, break: false, output: true, comparator: true, observer: false, sticky: false, storage: false },
+            { name: "Piston", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false },
+            { name: "Sticky Piston", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: true, storage: false },
+            { name: "Extended Piston", solid: false, redirect: false, move: false, slip: true, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false },
+            { name: "Slime Block", solid: true, redirect: false, move: true, slip: true, break: false, output: false, comparator: false, observer: false, sticky: true, storage: false },
+            { name: "Honey Block", solid: false, redirect: false, move: true, slip: true, break: false, output: false, comparator: false, observer: false, sticky: true, storage: false },
+            { name: "Dispenser", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: true, sticky: false, storage: true },
+            { name: "Dropper", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: true, sticky: false, storage: true },
+            { name: "Crafter", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: true, sticky: false, storage: true },
+            { name: "Hopper", solid: false, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: true, sticky: false, storage: true },
+            { name: "Chest", solid: false, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: false, sticky: false, storage: true },
+            { name: "Trapped Chest", solid: false, redirect: true, move: false, slip: true, break: false, output: true, comparator: true, observer: false, sticky: false, storage: true },
+            { name: "Barrel", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: false, sticky: false, storage: true },
+            { name: "Furnace", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: false, sticky: false, storage: true },
+            { name: "Jukebox", solid: true, redirect: true, move: false, slip: true, break: false, output: true, comparator: true, observer: false, sticky: false, storage: true },
+            { name: "Decorated Pot", solid: false, redirect: false, move: true, slip: true, break: true, output: false, comparator: true, observer: false, sticky: false, storage: true },
+            { name: "Observer", solid: false, redirect: true, move: true, slip: false, break: false, output: true, comparator: false, observer: true, sticky: false, storage: false },
+            { name: "Note Block", solid: true, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false },
+            { name: "Composter", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: true, observer: false, sticky: false, storage: false },
+            { name: "Cauldron", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: true, observer: false, sticky: false, storage: true },
+            { name: "Rail", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false },
+            { name: "Powered Rail", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false },
+            { name: "Detector Rail", solid: false, redirect: false, move: true, slip: false, break: false, output: true, comparator: false, observer: false, sticky: false, storage: false },
+            { name: "Activator Rail", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false },
+            { name: "Door", solid: false, redirect: false, move: true, slip: true, break: true, output: false, comparator: false, observer: true, sticky: false, storage: false },
+            { name: "Fence Gate/Trapdoor", solid: false, redirect: false, move: true, slip: true, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false },
+            { name: "Redstone Lamp", solid: true, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false },
+            { name: "Redstone Ore", solid: true, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false },
+            { name: "Obsidian", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false },
+            { name: "Glass", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false },
+            { name: "Glazed Terracotta", solid: true, redirect: false, move: true, slip: true, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false },
+        ];
+        const checkboxes = document.querySelectorAll('.use');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const targetId = this.getAttribute('data-target');
+                const targetElement = document.getElementById(targetId);
+                const secondCheckbox = targetElement.querySelector('input[type="checkbox"]');
+                if (this.checked) {
+                    targetElement.classList.remove('hidden');
+                    secondCheckbox.disabled = false;
+                } else {
+                    targetElement.classList.add('hidden');
+                    secondCheckbox.disabled = true;
+                }
+            });
+        });
+        function generate() {
+            const p1 = document.getElementById("solid").checked;
+            const p2 = document.getElementById("redirect").checked;
+            const p3 = document.getElementById("move").checked;
+            const p4 = document.getElementById("slip").checked;
+            const p5 = document.getElementById("break").checked;
+            const p6 = document.getElementById("output").checked;
+            const p7 = document.getElementById("comparator").checked;
+            const p8 = document.getElementById("observer").checked;
+            const p9 = document.getElementById("sticky").checked;
+            const p10 = document.getElementById("storage").checked;
+            const u1 = document.getElementById("usesolid").checked;
+            const u2 = document.getElementById("useredirect").checked;
+            const u3 = document.getElementById("usemove").checked;
+            const u4 = document.getElementById("useslip").checked;
+            const u5 = document.getElementById("usebreak").checked;
+            const u6 = document.getElementById("useoutput").checked;
+            const u7 = document.getElementById("usecomparator").checked;
+            const u8 = document.getElementById("useobserver").checked;
+            const u9 = document.getElementById("usesticky").checked;
+            const u10 = document.getElementById("usestorage").checked;
+            
+            const filteredBlocks = properties.filter(block => {
+                return ((p1 === block.solid) || !u1) &&
+                       ((p2 === block.redirect) || !u2) &&
+                       ((p3 === block.move) || !u3) &&
+                       ((p4 === block.slip) || !u4) &&
+                       ((p5 === block.break) || !u5) &&
+                       ((p6 === block.output) || !u6) &&
+                       ((p7 === block.comparator) || !u7) &&
+                       ((p8 === block.observer) || !u8) &&
+                       ((p9 === block.sticky) || !u9) &&
+                       ((p10 === block.storage) || !u10);
+            });
+            
+            const outputList = document.getElementById("list");
+            outputList.innerHTML = "<h2>Generated Blocks:</h2>";
+            
+            if (filteredBlocks.length === 0) {
+                outputList.innerHTML += "<p>No blocks match the selected criteria.</p>";
+            } else {
+                const ul = document.createElement("ul");
+                filteredBlocks.forEach(block => {
+                    const li = document.createElement("li");
+                    li.textContent = block.name;
+                    ul.appendChild(li);
+                });
+                outputList.appendChild(ul);
+            }
+        }
+    </script>
+</body>
+</html>
