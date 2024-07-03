@@ -22,53 +22,55 @@
     <input type="checkbox" id="useobserver" class="use" data-target="observerdisplay"><span id="observerdisplay" class="hidden"><input type="checkbox" id="observer" disabled> Gives Observer Output When Powered</span><br>
     <input type="checkbox" id="usesticky" class="use" data-target="stickydisplay"><span id="stickydisplay" class="hidden"><input type="checkbox" id="sticky" disabled> Sticky</span><br>
     <input type="checkbox" id="usestorage" class="use" data-target="storagedisplay"><span id="storagedisplay" class="hidden"><input type="checkbox" id="storage" disabled> Can Store Items</span><br>
+    <input type="checkbox" id="usehold" class="use" data-target="holddisplay"><span id="holddisplay" class="hidden"><input type="checkbox" id="hold" disabled> Can Hold Redstone Dust</span><br>
     <button onclick="generate()">Generate</button>
     <ul id="list"></ul>
     <script>
         const properties = [
-            { name: "Standard Building Block", solid: true, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false },
-            { name: "Redstone Dust - Carries redstone signal - 0 ticks", solid: false, redirect: true, move: true, slip: true, break: true, output: false, comparator: false, observer: true, sticky: false, storage: false },
-            { name: "Redstone Torch - Inverts polarity - 1 tick", solid: false, redirect: true, move: true, slip: true, break: true, output: true, comparator: true, observer: true, sticky: false, storage: false },
-            { name: "Redstone Block - Power source", solid: true, redirect: true, move: true, slip: false, break: false, output: true, comparator: true, observer: false, sticky: false, storage: false },
-            { name: "Redstone Repeater - Renews redstone signal strength - 1 tick, 2 ticks, 3 ticks, or 4 ticks", solid: false, redirect: true, move: true, slip: true, break: true, output: false, comparator: false, observer: true, sticky: false, storage: false },
-            { name: "Redstone Comparator - Detects items in containers; Adds or substracts signal strengths - 1 tick", solid: false, redirect: true, move: true, slip: true, break: true, output: false, comparator: false, observer: true, sticky: false, storage: false },
-            { name: "Target - Detects projectiles; Redirects redstone dust", solid: true, redirect: true, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false },
-            { name: "Copper Bulb - Changes polarity when powered - 1 tick", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: true, observer: true, sticky: false, storage: false },
-            { name: "Lever/Button/Presssure Plate - Player inputs", solid: false, redirect: true, move: true, slip: true, break: true, output: true, comparator: true, observer: false, sticky: false, storage: false },
-            { name: "Sculk Sensor - Detects sounds - 20 ticks", solid: false, redirect: true, move: false, slip: true, break: false, output: true, comparator: true, observer: false, sticky: false, storage: false },
-            { name: "Lectern - Used for editing, reading, and storing  books", solid: false, redirect: true, move: false, slip: true, break: false, output: false, comparator: true, observer: false, sticky: false, storage: true },
-            { name: "Daylight Detector - Detects sunlight", solid: false, redirect: true, move: false, slip: true, break: false, output: true, comparator: true, observer: false, sticky: false, storage: false },
-            { name: "Lightning Rod - Gives output when struck by lightning - 4 ticks", solid: false, redirect: true, move: false, slip: true, break: false, output: true, comparator: true, observer: false, sticky: false, storage: false },
-            { name: "Piston - Pushes blocks - 1.5 ticks", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false },
-            { name: "Sticky Piston - Pushes and pulls blocks - 1.5 ticks", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: true, storage: false },
-            { name: "Extended Piston - Pulls blocks - 0 ticks", solid: false, redirect: false, move: false, slip: true, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false },
-            { name: "Slime Block - Sticks moving blocks together", solid: true, redirect: false, move: true, slip: true, break: false, output: false, comparator: false, observer: false, sticky: true, storage: false },
-            { name: "Honey Block - Sticks moving blocks together", solid: false, redirect: false, move: true, slip: true, break: false, output: false, comparator: false, observer: false, sticky: true, storage: false },
-            { name: "Dispenser - Dispenses items and shoots projectiles", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: true, sticky: false, storage: true },
-            { name: "Dropper - Dispenses items into other blocks - 0 ticks", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: true, sticky: false, storage: true },
-            { name: "Crafter - Automatically crafts items - 0 ticks", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: true, sticky: false, storage: true },
-            { name: "Hopper - Automatically moves items - 0 ticks", solid: false, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: true, sticky: false, storage: true },
-            { name: "Chest - Stores items", solid: false, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: false, sticky: false, storage: true },
-            { name: "Trapped Chest - Stores items; Gives output when opened", solid: false, redirect: true, move: false, slip: true, break: false, output: true, comparator: true, observer: false, sticky: false, storage: true },
-            { name: "Barrel - Stores items", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: false, sticky: false, storage: true },
-            { name: "Furnace - Smelts items", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: false, sticky: false, storage: true },
-            { name: "Jukebox - Plays music disks", solid: true, redirect: true, move: false, slip: true, break: false, output: true, comparator: true, observer: false, sticky: false, storage: true },
-            { name: "Decorated Pot - Stores items", solid: false, redirect: false, move: true, slip: true, break: true, output: false, comparator: true, observer: false, sticky: false, storage: true },
-            { name: "Observer - Detects block updates - 1 tick", solid: false, redirect: true, move: true, slip: false, break: false, output: true, comparator: false, observer: true, sticky: false, storage: false },
-            { name: "Note Block - Plays a single tone when powered - 0 ticks", solid: true, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false },
-            { name: "Composter - Makes bone meal from compost; Is a unique moveable comparator output", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: true, observer: false, sticky: false, storage: false },
-            { name: "Cauldron - Stores liquids", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: true, observer: false, sticky: false, storage: true },
-            { name: "Rail - Turns and carries minecarts", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false },
-            { name: "Powered Rail - Moves minecarts - 0 ticks", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false },
-            { name: "Detector Rail - Detects minecarts", solid: false, redirect: false, move: true, slip: false, break: false, output: true, comparator: false, observer: false, sticky: false, storage: false },
-            { name: "Activator Rail - Removes entities from minecarts - 0 ticks", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false },
-            { name: "Door - Opens and closes - 0 ticks", solid: false, redirect: false, move: true, slip: true, break: true, output: false, comparator: false, observer: true, sticky: false, storage: false },
-            { name: "Fence Gate/Trapdoor - Opens and closes - 0 ticks", solid: false, redirect: false, move: true, slip: true, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false },
-            { name: "Redstone Lamp - Emits light when powered - 0 ticks on, 3 ticks off", solid: true, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false },
-            { name: "Redstone Ore - Detects it's own updates", solid: true, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false },
-            { name: "Obsidian - Immovable block", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false },
-            { name: "Glass - Transparent block", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false },
-            { name: "Glazed Terracotta - Slippery block", solid: true, redirect: false, move: true, slip: true, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false },
+            { name: "Standard Building Block", solid: true, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false, hold: true },
+            { name: "Redstone Dust - Carries redstone signal - 0 ticks", solid: false, redirect: true, move: true, slip: true, break: true, output: false, comparator: false, observer: true, sticky: false, storage: false, hold: false },
+            { name: "Redstone Torch - Inverts polarity - 1 tick", solid: false, redirect: true, move: true, slip: true, break: true, output: true, comparator: true, observer: true, sticky: false, storage: false, hold: false },
+            { name: "Redstone Block - Power source", solid: true, redirect: true, move: true, slip: false, break: false, output: true, comparator: true, observer: false, sticky: false, storage: false, hold: false },
+            { name: "Redstone Repeater - Renews redstone signal strength - 1 tick, 2 ticks, 3 ticks, or 4 ticks", solid: false, redirect: true, move: true, slip: true, break: true, output: false, comparator: false, observer: true, sticky: false, storage: false, hold: false },
+            { name: "Redstone Comparator - Detects items in containers; Adds or substracts signal strengths - 1 tick", solid: false, redirect: true, move: true, slip: true, break: true, output: false, comparator: false, observer: true, sticky: false, storage: false, hold: false },
+            { name: "Target - Detects projectiles; Redirects redstone dust", solid: true, redirect: true, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false, hold: true },
+            { name: "Copper Bulb - Changes polarity when powered - 1 tick", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: true, observer: true, sticky: false, storage: false, hold: true },
+            { name: "Lever/Button/Presssure Plate - Player inputs", solid: false, redirect: true, move: true, slip: true, break: true, output: true, comparator: true, observer: false, sticky: false, storage: false, hold: false },
+            { name: "Sculk Sensor - Detects sounds - 20 ticks", solid: false, redirect: true, move: false, slip: true, break: false, output: true, comparator: true, observer: false, sticky: false, storage: false, hold: false },
+            { name: "Lectern - Used for editing, reading, and storing  books", solid: false, redirect: true, move: false, slip: true, break: false, output: false, comparator: true, observer: false, sticky: false, storage: true, hold: false },
+            { name: "Daylight Detector - Detects sunlight", solid: false, redirect: true, move: false, slip: true, break: false, output: true, comparator: true, observer: false, sticky: false, storage: false, hold: false },
+            { name: "Lightning Rod - Gives output when struck by lightning - 4 ticks", solid: false, redirect: true, move: false, slip: true, break: false, output: true, comparator: true, observer: false, sticky: false, storage: false, hold: true },
+            { name: "Piston - Pushes blocks - 1.5 ticks", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false, hold: true },
+            { name: "Sticky Piston - Pushes and pulls blocks - 1.5 ticks", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: true, storage: false, hold: true },
+            { name: "Extended Piston - Pulls blocks - 0 ticks", solid: false, redirect: false, move: false, slip: true, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false, hold: false },
+            { name: "Slime Block - Sticks moving blocks together", solid: true, redirect: false, move: true, slip: true, break: false, output: false, comparator: false, observer: false, sticky: true, storage: false, hold: true },
+            { name: "Honey Block - Sticks moving blocks together", solid: false, redirect: false, move: true, slip: true, break: false, output: false, comparator: false, observer: false, sticky: true, storage: false, hold: false },
+            { name: "Dispenser - Dispenses items and shoots projectiles", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: true, sticky: false, storage: true, hold: true },
+            { name: "Dropper - Dispenses items into other blocks - 0 ticks", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: true, sticky: false, storage: true, hold: true },
+            { name: "Crafter - Automatically crafts items - 0 ticks", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: true, sticky: false, storage: true, hold: true },
+            { name: "Hopper - Automatically moves items - 0 ticks", solid: false, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: true, sticky: false, storage: true, hold: false },
+            { name: "Chest - Stores items", solid: false, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: false, sticky: false, storage: true, hold: true },
+            { name: "Trapped Chest - Stores items; Gives output when opened", solid: false, redirect: true, move: false, slip: true, break: false, output: true, comparator: true, observer: false, sticky: false, storage: true, hold: true },
+            { name: "Barrel - Stores items", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: false, sticky: false, storage: true, hold: true },
+            { name: "Furnace - Smelts items", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: true, observer: false, sticky: false, storage: true, hold: true },
+            { name: "Jukebox - Plays music disks", solid: true, redirect: true, move: false, slip: true, break: false, output: true, comparator: true, observer: false, sticky: false, storage: true, hold: true },
+            { name: "Decorated Pot - Stores items", solid: false, redirect: false, move: true, slip: true, break: true, output: false, comparator: true, observer: false, sticky: false, storage: true, hold: false },
+            { name: "Observer - Detects block updates - 1 tick", solid: false, redirect: true, move: true, slip: false, break: false, output: true, comparator: false, observer: true, sticky: false, storage: false, hold: true },
+            { name: "Note Block - Plays a single tone when powered - 0 ticks", solid: true, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false, hold: true },
+            { name: "Composter - Makes bone meal from compost; Is a unique moveable comparator output", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: true, observer: false, sticky: false, storage: false, hold: false },
+            { name: "Cauldron - Stores liquids", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: true, observer: false, sticky: false, storage: true, hold: false },
+            { name: "Rail - Turns and carries minecarts", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false, hold: false },
+            { name: "Powered Rail - Moves minecarts - 0 ticks", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false, hold: false },
+            { name: "Detector Rail - Detects minecarts", solid: false, redirect: false, move: true, slip: false, break: false, output: true, comparator: false, observer: false, sticky: false, storage: false, hold: false },
+            { name: "Activator Rail - Removes entities from minecarts - 0 ticks", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false, hold: false },
+            { name: "Door - Opens and closes - 0 ticks", solid: false, redirect: false, move: true, slip: true, break: true, output: false, comparator: false, observer: true, sticky: false, storage: false, hold: false },
+            { name: "Fence Gate/Trapdoor - Opens and closes - 0 ticks", solid: false, redirect: false, move: true, slip: true, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false, hold: false },
+            { name: "Redstone Lamp - Emits light when powered - 0 ticks on, 3 ticks off", solid: true, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false, hold: true },
+            { name: "Redstone Ore - Detects it's own updates", solid: true, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false, hold: true },
+            { name: "Obsidian - Immovable block", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false, hold: true },
+            { name: "Leaves - Send updates through other leaves from logs", solid: false, redirect: false, move: true, slip: true, break: true, output: false, comparator: false, observer: true, sticky: false, storage: false, hold: false },
+            { name: "Glass - Transparent block", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false, hold: true },
+            { name: "Glazed Terracotta - Slippery block", solid: true, redirect: false, move: true, slip: true, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false, hold: true },
         ];
         const checkboxes = document.querySelectorAll('.use');
         checkboxes.forEach(checkbox => {
@@ -96,6 +98,7 @@
             const p8 = document.getElementById("observer").checked;
             const p9 = document.getElementById("sticky").checked;
             const p10 = document.getElementById("storage").checked;
+            const p11 = document.getElementById("hold").checked;
             const u1 = document.getElementById("usesolid").checked;
             const u2 = document.getElementById("useredirect").checked;
             const u3 = document.getElementById("usemove").checked;
@@ -106,6 +109,7 @@
             const u8 = document.getElementById("useobserver").checked;
             const u9 = document.getElementById("usesticky").checked;
             const u10 = document.getElementById("usestorage").checked;
+            const u11 = document.getElementById("usehold").checked;
             
             const filteredBlocks = properties.filter(block => {
                 return ((p1 === block.solid) || !u1) &&
@@ -117,7 +121,8 @@
                        ((p7 === block.comparator) || !u7) &&
                        ((p8 === block.observer) || !u8) &&
                        ((p9 === block.sticky) || !u9) &&
-                       ((p10 === block.storage) || !u10);
+                       ((p10 === block.storage) || !u10) &&
+                       ((p11 === block.hold) || !u11);
             });
             
             const outputList = document.getElementById("list");
