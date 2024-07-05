@@ -34,6 +34,14 @@
             margin: 5px;
             border-radius: 10px;
         }
+        nav a:hover {
+            background-color: #555;
+            transition: background-color 0.3s;
+        }
+        .red:hover {
+            background-color: #9b2b2b;
+            transition: background-color 0.3s;
+        }
         .server {
             margin-left: calc(50% - 130px);
         }
@@ -66,12 +74,12 @@
         <a href="/games">Games</a>
         <a href="/downloads">Downloads</a>
         <a href="/server">DevCraft</a>
+        <a href="/redstone" class="red">Redstone</a>
     </nav>
     <h1>dtar in Minecraft</h1>
     <div style="padding:40px">
         <a href="/commands" class="button" style="position:absolute;right:40px"><h2>My Minecraft Commands</h2></a>
-        <a href="/redstone:generator" class="button redstone"><h2>My Redstone Generator</h2></a>
-        <a href="/redstone:dictionary" class="button redstone" style="position:absolute;left:calc(50% - 155px)"><h2>Redstone Terminology</h2></a>
+        <a href="/redstone" class="button redstone"><h2>My Redstone Stuff</h2></a>
     </div>
     <div class="server">
         <button onclick="server()" class="button"><h2>My Minecraft Server</h2></button>
