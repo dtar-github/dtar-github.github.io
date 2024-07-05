@@ -7,9 +7,30 @@
         .hidden {
             color: lightgray;
         }
+        nav {
+            text-align: center;
+            background-color: #7c0000;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            margin: 0 5px;
+            border-radius: 10px;
+        }
+        nav a:hover {
+            background-color: #e20000;
+            transition: background-color 0.3s;
+        }
     </style>
 </head>
 <body>
+    <nav>
+        <a href="/redstone">Home</a>
+        <a href="/redstone:dictionary">Terminology</a>
+    </nav>
     <h1>Redstone Generator</h1>
     <p>Created by <a href="https://www.youtube.com/@dtar_yt">DevDoors</a></p>
     <input type="checkbox" id="usesolid" class="use" data-target="soliddisplay"><span id="soliddisplay" class="hidden"><input type="checkbox" id="solid" disabled> Solid</span><br>
@@ -68,7 +89,7 @@
             { name: "Redstone Lamp - Emits light when powered - 0 ticks on, 3 ticks off", solid: true, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: true, sticky: false, storage: false, hold: true },
             { name: "Redstone Ore - Detects it's own updates", solid: true, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false, hold: true },
             { name: "Obsidian - Immovable block", solid: true, redirect: false, move: false, slip: true, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false, hold: true },
-            { name: "Leaves - Send updates through other leaves from logs", solid: false, redirect: false, move: true, slip: true, break: true, output: false, comparator: false, observer: true, sticky: false, storage: false, hold: false },
+            { name: "Leaves - Send updates through other leaves from logs", solid: false, redirect: false, move: true, slip: true, break: true, output: false, comparator: false, observer: false, sticky: false, storage: false, hold: false },
             { name: "Glass - Transparent block", solid: false, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false, hold: true },
             { name: "Glazed Terracotta - Slippery block", solid: true, redirect: false, move: true, slip: true, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false, hold: true },
         ];
