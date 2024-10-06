@@ -1,0 +1,94 @@
+if [ "${BASH_SOURCE[0]}" == "${0}" ]
+then
+clear
+stty -echo
+echo "Functions and descriptions:
+
+menu()
+Press w and s to move up and down
+Press any other key to select
+
+fullscreen()
+Asks user to fullscreen the terminal
+When they fullscreen, it continues the program
+"
+read
+stty echo
+fi
+menu() {
+clear
+echo $1
+options=(${!2})
+functions=(${!3})
+chars=()
+for i in ${!options[@]}
+do
+option=${options[i]}
+new_option=""
+chars+=(${#option})
+for (( n=0; n<${#option}; n++ ))
+do
+if [ ${option:n:1} = "_" ]
+then
+new_option="$new_option "
+else
+new_option="$new_option${option:n:1}"
+fi
+done
+echo $new_option
+done
+menu=1
+while true
+do
+tput cup $menu ${chars[$((menu - 1))]}
+read -sn1 read
+case $read in
+"w")
+if [ $menu = 1 ]
+then
+menu=${#options[@]}
+else
+((menu--))
+fi
+;;
+"s")
+if [ $menu = ${#options[@]} ]
+then
+menu=1
+else
+((menu++))
+fi
+;;
+*)
+output=$menu
+return
+esac
+done
+}
+fullscreen() {
+tput smcup
+while [ $(tput cols) -lt 200 ] && [ $(tput lines) -lt 60 ]
+do
+clear
+echo "Please fullscreen the terminal"
+echo "Status: Window"
+sleep 0.1
+done
+clear
+echo "Status: Fullscreen"
+echo "Press enter to continue"
+stty -echo
+read
+stty echo
+}
+index() {
+index=()
+for i in ${!array[@]}
+do
+if [ ${array[$i]} == $1 ]
+then
+index+=($i)
+fi
+done
+echo ${index[@]}
+}
