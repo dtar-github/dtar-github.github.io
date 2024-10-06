@@ -8,7 +8,7 @@ if [ $(($games + ${vars[6]})) -eq 0 ]
 then
 percent=0
 else
-percent=$(echo "scale=2; $games/($games+${vars[6]})*100" | bc -l)
+percent=$(echo "scale=2; $(echo "$games/($games+${vars[6]})*10000" | bc -l)/100" | bc -l)
 fi
 games=$(($games + ${vars[6]}))
 echo "<html><head><title>Bash Wordle Stats</title></head><body><h1>All-Time Wordle Stats</h1><p>Win Percentage: $percent%</p><p>Games Played: $games</p><p>1 Guess: ${vars[0]}</p><p>2 Guesses: ${vars[1]}</p><p>3 Guesses: ${vars[2]}</p><p>4 Guesses: ${vars[3]}</p><p>5 Guesses: ${vars[4]}</p><p>6 Guesses: ${vars[5]}</p><p>Losses: ${vars[6]}</p></body></html>" > stats.html
