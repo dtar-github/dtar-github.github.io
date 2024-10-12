@@ -19,7 +19,6 @@ mkdir -p "Wordle_Data"
 cd "Wordle_Data"
 if [ ! -f "words.txt" ]
 then
-echo "Use ONLY lowercase letters"
 echo "Press '=' to delete, NOT the [Delete] button"
 echo "DO NOT press enter while typing words"
 echo
