@@ -97,6 +97,9 @@ echo " "
 fi
 ;;
 *)
+letter=$(echo "$letter" | awk '{print tolower($0)}')
+cup
+printf $letter
 word+=$letter
 ((col++))
 if printf "%s\0" "${words[@]}" | grep -Fxqz -- "$word"
