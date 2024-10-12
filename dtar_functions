@@ -8,9 +8,44 @@ menu()
 Press w and s to move up and down
 Press any other key to select
 
+Paramerters:
+menu [title] [options]
+
+Example:
+output=0
+options=(\"Option A\" \"Option B\" \"Option C\")
+menu \"Choose An Option:\" options[@]
+case \$output in
+1) functionA;;
+2) functionB;;
+3) functionC;;
+esac
+
+
+
 fullscreen()
 Asks user to fullscreen the terminal
 When they fullscreen, it continues the program
+
+Parameters:
+fullscreen
+
+Example:
+fullscreen
+
+
+
+index()
+Gets the index of an item in an array named \"array\"
+
+Parameters:
+index [item]
+
+Example:
+array=(\"itemA\" \"itemB\" \"itemC\")
+item=\${array[\$((\$RANDOM % \${#array[@]}))]}
+index=\$(index \"\$item\")
+echo \"Item \${index[0]} in the array is '\$item'\"
 "
 read
 stty echo
