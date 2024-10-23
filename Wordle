@@ -2,7 +2,7 @@ cup() {
 tput cup $(($row * 2)) $(($col * 4 - 2))
 }
 stats() {
-vars=($(cat vars))
+vars=($(echo $(cat vars) | openssl aes-256-cbc -d -a -pbkdf2 -pass pass:wordle))
 games="$((${vars[0]} + ${vars[1]} + ${vars[2]} + ${vars[3]} + ${vars[4]} + ${vars[5]}))"
 if [ $(($games + ${vars[6]})) -eq 0 ]
 then
@@ -17,8 +17,21 @@ clear
 cd "$(dirname "$0")"
 mkdir -p "Wordle_Data"
 cd "Wordle_Data"
+if [ -f "session" ]
+then
+if [ "$(cat session)" != "0" ]
+then
+echo "Previous Session Was Terminated   :("
+echo "Press enter to continue"
+read
+clear
+fi
+else
+echo "0" > session
+fi
 if [ ! -f "words.txt" ]
 then
+echo "Use ONLY lowercase letters"
 echo "Press '=' to delete, NOT the [Delete] button"
 echo "DO NOT press enter while typing words"
 echo
@@ -39,7 +52,7 @@ exit
 fi
 if [ ! -f "vars" ]
 then
-echo "0 0 0 0 0 0 0" > vars
+echo "0 0 0 0 0 0 0" | openssl aes-256-cbc -a -salt -pbkdf2 -pass pass:wordle > vars
 fi
 stats
 clear
@@ -59,6 +72,7 @@ stty echo
 clear
 input=()
 guess=${words[$(($RANDOM % ${#words[@]}))]}
+echo "1" > session
 word=""
 row=1
 col=1
@@ -150,9 +164,10 @@ echo "                           "
 echo "Wins: $wins"
 echo "Losses: $losses"
 vars[$(($statrow - 1))]=$((${vars[$(($statrow - 1))]} + 1))
-echo "${vars[@]}" > vars
+echo "${vars[@]}" | openssl aes-256-cbc -a -salt -pbkdf2 -pass pass:wordle > vars
 stats
 stty -echo
+echo "0" > session
 read
 win=1
 else
@@ -166,9 +181,10 @@ echo
 echo "Wins: $wins"
 echo "Losses: $losses"
 vars[6]=$((${vars[6]} + 1))
-echo "${vars[@]}" > vars
+echo "${vars[@]}" | openssl aes-256-cbc -a -salt -pbkdf2 -pass pass:wordle > vars
 stats
 stty -echo
+echo "0" > session
 read
 win=2
 fi
