@@ -603,7 +603,13 @@ case $output in
 8) exit
 esac
 }
-source "$(dirname "$(realpath "$0")")/dtar_functions"
+cd "$(dirname "$0")"
+if [ ! -f "dtar_functions" ]
+then
+curl "https://raw.githubusercontent.com/dtar-github/dtar-github.github.io/refs/heads/main/dtar_functions" > dtar_functions
+chmod +x dtar_functions
+fi
+source "dtar_functions"
 tput smcup
 while [ $(tput cols) -lt 100 ] && [ $(tput lines) -lt 40 ]
 do
