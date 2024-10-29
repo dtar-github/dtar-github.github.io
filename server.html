@@ -3,8 +3,9 @@
 <head>
     <title>DevCraft</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="main.css">
     <style>
-        h1,b {
+        b {
             text-align: center;
         }
         .left {
@@ -50,30 +51,16 @@
         #Copy:active {
             background-color: #ffffff;
         }
-        nav {
-            text-align: center;
-            background-color: #333;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        nav a {
+        .dark {
+            filter: none;
             color: white;
-            text-decoration: none;
-            padding: 5px 10px;
-            margin: 5px;
-            border-radius: 10px;
+            background-color: #000000;
         }
-        nav a:hover {
-            background-color: #555;
-            transition: background-color 0.3s;
+        .dark a {
+            color: #0000ff;
         }
-        .red:hover {
-            background-color: #9b2b2b;
-            transition: background-color 0.3s;
-        }
-        .green:hover {
-            background-color: #3c9b2b;
-            transition: background-color 0.3s;
+        .dark nav a {
+            color: white;
         }
     </style>
 </head>
@@ -84,6 +71,7 @@
         <a href="/downloads">Downloads</a>
         <a class="green" href="/minecraft">Minecraft</a>
         <a href="/redstone" class="red">Redstone</a>
+        <input type="checkbox" id="dark"><span style="padding:0px">Dark Mode</span>
     </nav>
     <h1>DevCraft</h1><br>
     <div class="left">
@@ -118,5 +106,6 @@
             navigator.clipboard.writeText("DevDoors.aternos.me")
         }
     </script>
+    <script src="darkmode.js"></script>
 </body>
 </html>

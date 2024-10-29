@@ -1,0 +1,72 @@
+body {
+    transition: all 0.3s ease;
+}
+h1,h2,h3 {
+    text-align: center;
+}
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    border: 2px solid #000000;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+nav {
+    text-align: center;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 10px;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 10px;
+}
+nav span {
+    color: white;
+}
+.dark {
+    filter: invert(1) hue-rotate(180deg) brightness(0.9);
+    background-color: #000000;
+}
+nav a:hover {
+    background-color: #555;
+    transition: background-color 0.3s;
+}
+.red:hover {
+    background-color: #9b2b2b;
+    transition: background-color 0.3s;
+}
+.green:hover {
+    background-color: #3c9b2b;
+    transition: background-color 0.3s;
+}
+.spaceship {
+    background-color: #00003d;
+    color: #ffffff;
+}
+.grapple {
+    background-color: #81ff7f;
+    color: #000000;
+}
+.toetactic {
+    background-color: #0099ff;
+    color: #000000;
+}
+.robot {
+    background-color: #00ff2f;
+    color: #492400;
+}
+.geometry {
+    background-color: #ff0000;
+    color: #000000;
+}
+.slither {
+    background-color: #1f0068;
+    color: #f2ff00;
+}

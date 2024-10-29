@@ -3,26 +3,19 @@
 <head>
     <title>Redstone Generator</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="main.css">
     <style>
         .hidden {
             color: lightgray;
         }
         nav {
-            text-align: center;
             background-color: #7c0000;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 5px 10px;
-            margin: 0 5px;
-            border-radius: 10px;
         }
         nav a:hover {
             background-color: #e20000;
-            transition: background-color 0.3s;
+        }
+        h2 {
+            text-align: left;
         }
     </style>
 </head>
@@ -30,6 +23,7 @@
     <nav>
         <a href="/redstone">Home</a>
         <a href="/redstone:dictionary">Terminology</a>
+        <input type="checkbox" id="dark"><span>Dark Mode</span>
     </nav>
     <h1>Redstone Generator</h1>
     <p>Created by <a href="https://www.youtube.com/channel/UC7dk5ri6JlFCCTTUySTi02g">DevDoors</a></p>
@@ -162,5 +156,6 @@
             }
         }
     </script>
+    <script src="darkmode.js"></script>
 </body>
 </html>

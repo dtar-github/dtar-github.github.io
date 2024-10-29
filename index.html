@@ -3,22 +3,8 @@
 <head>
     <title>dtar Homepage</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="main.css">
     <style>
-        h1 {
-            text-align: center;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            border: 2px solid #000000;
-            transition: background-color 0.3s;
-            margin-top: 10px;
-            margin-bottom: 10px;
-
-        }
         .scratch {
             background-color: #d99f00;
             color: #000000;
@@ -68,31 +54,6 @@
             border-left: 2px solid #000000;
             padding-left: 20px;
         }
-        nav {
-            text-align: center;
-            background-color: #333;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 5px 10px;
-            margin: 5px;
-            border-radius: 10px;
-        }
-        nav a:hover {
-            background-color: #555;
-            transition: background-color 0.3s;
-        }
-        .red:hover {
-            background-color: #9b2b2b;
-            transition: background-color 0.3s;
-        }
-        .green:hover {
-            background-color: #3c9b2b;
-            transition: background-color 0.3s;
-        }
         .dtar {
             border: 3px solid;
             border-radius: 10px;
@@ -102,7 +63,7 @@
             top: 100px;
             left: 80%;
         }
-        span {
+        span.letter {
             position:relative;
             font-size:30px
         }
@@ -278,10 +239,11 @@
         <a class="green" href="/minecraft">Minecraft</a>
         <a class="green" href="/server">DevCraft</a>
         <a href="/redstone" class="red">Redstone</a>
+        <input type="checkbox" id="dark"><span>Dark Mode</span>
     </nav>
     <div class="dtar">
         <b>
-            <span class=d>d</span> <span class=t>t</span> <span class=a>a</span> <span class=r>r</span>
+            <span class="d letter">d</span> <span class="t letter">t</span> <span class="a letter">a</span> <span class="r letter">r</span>
         </b>
     </div>
     <h1>dtar Homepage!</h1>
@@ -299,5 +261,6 @@
     <hr>
     <a href="/desmos" class="button desmos">My Desmos</a>
     <a href="/commands" class="button minecraft">Minecraft Commands</a>
+    <script src="darkmode.js"></script>
 </body>
 </html>
