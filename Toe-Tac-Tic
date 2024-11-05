@@ -21,14 +21,14 @@ then
 ((col++))
 fi
 ;;*)
-if [ "${matrix[$(($row * $1 + $col - $1 - 1))]}" = " " ] && ! ([ $output = 7 ] && [ $row = 1 ])
+if [ "${matrix[$(($row * $1 + $col - $1 - 1))]}" = " " ] && ! ([ $output = 8 ] && [ $row = 1 ])
 then
 matrix[$(($row * $1 + $col - $1 - 1))]=$turn
 if [ $turn == "X" ]
 then
 turn="O"
 else
-if [ $output = 5 ] || [ $output = 6 ] && [ $turn == "O" ]
+if [ $output = 6 ] || [ $output = 7 ] && [ $turn == "O" ]
 then
 turn="I"
 else
@@ -57,7 +57,7 @@ case ${matrix[$(($(($n + $start - 2)) * $2 + $i - 1))]} in
 "O") ((orow++));;
 "I") ((irow++));;
 *)
-if ! ([ $output = 7 ] && [ $(($n + $start)) = 2 ])
+if ! ([ $output = 8 ] && [ $(($n + $start)) = 2 ])
 then
 tie=0
 fi
@@ -67,12 +67,14 @@ case ${matrix[$(($i * $2 + $n - $2 + $start - 2))]} in
 "O") ((ocol++));;
 "I") ((icol++));;
 *)
-if ! ([ $output = 7 ] && [ $i = 1 ])
+if ! ([ $output = 8 ] && [ $i = 1 ])
 then
 tie=0
 fi
 esac
 done
+if ! [ $output -eq 2 ]
+then
 if [ $xrow -ge $1 ] || [ $xcol -ge $1 ]
 then
 echo "X wins!!"
@@ -87,6 +89,7 @@ if [ $irow -ge $1 ] || [ $icol -ge $1 ]
 then
 echo "I wins!!"
 return
+fi
 fi
 if [ $i -lt $(($2 - $1 + 2)) ]
 then
@@ -228,20 +231,20 @@ done
 while true
 do
 clear
-echo "      Tic Tac Toe"
-echo "       $turn's turn"
-echo
-echo "       │       │"
-echo "   ${matrix[0]}   │   ${matrix[1]}   │   ${matrix[2]}"
-echo "       │       │"
-echo "───────┼───────┼───────"
-echo "       │       │"
-echo "   ${matrix[3]}   │   ${matrix[4]}   │   ${matrix[5]}"
-echo "       │       │"
-echo "───────┼───────┼───────"
-echo "       │       │"
-echo "   ${matrix[6]}   │   ${matrix[7]}   │   ${matrix[8]}"
-echo "       │       │"
+echo "      Tic Tac Toe
+       $turn's turn
+
+       │       │
+   ${matrix[0]}   │   ${matrix[1]}   │   ${matrix[2]}
+       │       │
+───────┼───────┼───────
+       │       │
+   ${matrix[3]}   │   ${matrix[4]}   │   ${matrix[5]}
+       │       │
+───────┼───────┼───────
+       │       │
+   ${matrix[6]}   │   ${matrix[7]}   │   ${matrix[8]}
+       │       │"
 win=$(detect 3 3)
 if [ "$win" != "" ]
 then
@@ -258,6 +261,51 @@ move 3
 done
 }
 game2() {
+echo "Get three in a diagonal row to win"
+echo
+echo "Press enter to continue"
+read -s
+for i in {0..15}
+do
+matrix+=(" ")
+done
+while true
+do
+clear
+echo "        Tic Tac Toe 4x4
+           $turn's turn
+
+       │       │       │
+   ${matrix[0]}   │   ${matrix[1]}   │   ${matrix[2]}   │   ${matrix[3]}
+       │       │       │
+───────┼───────┼───────┼───────
+       │       │       │
+   ${matrix[4]}   │   ${matrix[5]}   │   ${matrix[6]}   │   ${matrix[7]}
+       │       │       │
+───────┼───────┼───────┼───────
+       │       │       │
+   ${matrix[8]}   │   ${matrix[9]}   │   ${matrix[10]}   │   ${matrix[11]}
+       │       │       │
+───────┼───────┼───────┼───────
+       │       │       │
+   ${matrix[12]}   │   ${matrix[13]}   │   ${matrix[14]}   │   ${matrix[15]}
+       │       │       │"
+win=$(detect 3 4)
+if [ "$win" != "" ]
+then
+tput cup 18 0
+echo $win
+tput cup 18 8
+stty -echo
+read
+start
+fi
+tput cup $((4 * $row)) $((8 * $col - 5))
+read -sn 1 key
+move 4
+done
+}
+game3() {
 if [ $output = 3 ]
 then
 echo "Win by getting four in a row or four in a box"
@@ -282,27 +330,27 @@ echo "             Toe Tac BOX!"
 else
 echo "              Toe Tac Tic"
 fi
-echo "               $turn's turn"
-echo
-echo "       │       │       │       │"
-echo "   ${matrix[0]}   │   ${matrix[1]}   │   ${matrix[2]}   │   ${matrix[3]}   │   ${matrix[4]}"
-echo "       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │"
-echo "   ${matrix[5]}   │   ${matrix[6]}   │   ${matrix[7]}   │   ${matrix[8]}   │   ${matrix[9]}"
-echo "       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────"
-echo "       │       │ \ | / │       │"
-echo "   ${matrix[10]}   │   ${matrix[11]}   │ - * - │   ${matrix[13]}   │   ${matrix[14]}"
-echo "       │       │ / | \ │       │"
-echo "───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │"
-echo "   ${matrix[15]}   │   ${matrix[16]}   │   ${matrix[17]}   │   ${matrix[18]}   │   ${matrix[19]}"
-echo "       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │"
-echo "   ${matrix[20]}   │   ${matrix[21]}   │   ${matrix[22]}   │   ${matrix[23]}   │   ${matrix[24]}"
-echo "       │       │       │       │"
+echo "               $turn's turn
+
+       │       │       │       │
+   ${matrix[0]}   │   ${matrix[1]}   │   ${matrix[2]}   │   ${matrix[3]}   │   ${matrix[4]}
+       │       │       │       │
+───────┼───────┼───────┼───────┼───────
+       │       │       │       │
+   ${matrix[5]}   │   ${matrix[6]}   │   ${matrix[7]}   │   ${matrix[8]}   │   ${matrix[9]}
+       │       │       │       │
+───────┼───────┼───────┼───────┼───────
+       │       │ \ | / │       │
+   ${matrix[10]}   │   ${matrix[11]}   │ - * - │   ${matrix[13]}   │   ${matrix[14]}
+       │       │ / | \ │       │
+───────┼───────┼───────┼───────┼───────
+       │       │       │       │
+   ${matrix[15]}   │   ${matrix[16]}   │   ${matrix[17]}   │   ${matrix[18]}   │   ${matrix[19]}
+       │       │       │       │
+───────┼───────┼───────┼───────┼───────
+       │       │       │       │
+   ${matrix[20]}   │   ${matrix[21]}   │   ${matrix[22]}   │   ${matrix[23]}   │   ${matrix[24]}
+       │       │       │       │"
 win=$(detect 4 5)
 if [ $output = 3 ]
 then
@@ -351,14 +399,92 @@ read -sn 1 key
 move 5
 done
 }
-game3() {
-echo "Get 3 in a row, then the box is yours!"
-echo "Win by getting 3 big boxes in a row"
-echo
-echo "Coming Soon!"
-read -s
-}
 game4() {
+echo "Get 3 in a row, but send the other player to other boxes"
+echo
+echo "Press enter to continue"
+read -s
+for i in {0..8}
+do
+matrix+=(" ")
+matrix1+=(" ")
+matrix2+=(" ")
+matrix3+=(" ")
+matrix4+=(" ")
+matrix5+=(" ")
+matrix6+=(" ")
+matrix7+=(" ")
+matrix8+=(" ")
+matrix9+=(" ")
+done
+while true
+do
+clear
+echo "                               Super Tic Tac Toe
+                                   $turn's turn
+
+       │       │                   │       │                   │       │
+   ${matrix1[0]}   │   ${matrix1[1]}   │   ${matrix1[2]}           ${matrix2[0]}   │   ${matrix2[1]}   │   ${matrix2[2]}           ${matrix3[0]}   │   ${matrix3[1]}   │   ${matrix3[2]}
+       │       │                   │       │                   │       │
+───────┼───────┼───────     ───────┼───────┼───────     ───────┼───────┼───────
+       │       │                   │       │                   │       │
+   ${matrix1[3]}   │   ${matrix1[4]}   │   ${matrix1[5]}           ${matrix2[3]}   │   ${matrix2[4]}   │   ${matrix2[5]}           ${matrix3[3]}   │   ${matrix3[4]}   │   ${matrix3[5]}
+       │       │                   │       │                   │       │
+───────┼───────┼───────     ───────┼───────┼───────     ───────┼───────┼───────
+       │       │                   │       │                   │       │
+   ${matrix1[6]}   │   ${matrix1[7]}   │   ${matrix1[8]}           ${matrix2[6]}   │   ${matrix2[7]}   │   ${matrix2[8]}           ${matrix3[6]}   │   ${matrix3[7]}   │   ${matrix3[8]}
+       │       │                   │       │                   │       │
+
+
+       │       │                   │       │                   │       │
+   ${matrix4[0]}   │   ${matrix4[1]}   │   ${matrix4[2]}           ${matrix5[0]}   │   ${matrix5[1]}   │   ${matrix5[2]}           ${matrix6[0]}   │   ${matrix6[1]}   │   ${matrix6[2]}
+       │       │                   │       │                   │       │
+───────┼───────┼───────     ───────┼───────┼───────     ───────┼───────┼───────
+       │       │                   │       │                   │       │
+   ${matrix4[3]}   │   ${matrix4[4]}   │   ${matrix4[5]}           ${matrix5[3]}   │   ${matrix5[4]}   │   ${matrix5[5]}           ${matrix6[3]}   │   ${matrix6[4]}   │   ${matrix6[5]}
+       │       │                   │       │                   │       │
+───────┼───────┼───────     ───────┼───────┼───────     ───────┼───────┼───────
+       │       │                   │       │                   │       │
+   ${matrix4[6]}   │   ${matrix4[7]}   │   ${matrix4[8]}           ${matrix5[6]}   │   ${matrix5[7]}   │   ${matrix5[8]}           ${matrix6[6]}   │   ${matrix6[7]}   │   ${matrix6[8]}
+       │       │                   │       │                   │       │
+
+
+       │       │                   │       │                   │       │
+   ${matrix7[0]}   │   ${matrix7[1]}   │   ${matrix7[2]}           ${matrix8[0]}   │   ${matrix8[1]}   │   ${matrix8[2]}           ${matrix9[0]}   │   ${matrix9[1]}   │   ${matrix9[2]}
+       │       │                   │       │                   │       │
+───────┼───────┼───────     ───────┼───────┼───────     ───────┼───────┼───────
+       │       │                   │       │                   │       │
+   ${matrix7[3]}   │   ${matrix7[4]}   │   ${matrix7[5]}           ${matrix8[3]}   │   ${matrix8[4]}   │   ${matrix8[5]}           ${matrix9[3]}   │   ${matrix9[4]}   │   ${matrix9[5]}
+       │       │                   │       │                   │       │
+───────┼───────┼───────     ───────┼───────┼───────     ───────┼───────┼───────
+       │       │                   │       │                   │       │
+   ${matrix7[6]}   │   ${matrix7[7]}   │   ${matrix7[8]}           ${matrix8[6]}   │   ${matrix8[7]}   │   ${matrix8[8]}           ${matrix9[6]}   │   ${matrix9[7]}   │   ${matrix9[8]}
+       │       │                   │       │                   │       │"
+win=$(detect 3 3)
+if [ "$win" != "" ]
+then
+tput cup 40 0
+echo $win
+tput cup 40 8
+stty -echo
+read
+start
+fi
+tput cup $((4 * $row + 13 * $boardrow)) $((8 * $col - 5 + 28 * $boardcol))
+read -sn1 key
+matrix "set" $(($boardrow * 3 + $boardcol + 1))
+move 3
+matrix "get" $(($boardrow * 3 + $boardcol + 1))
+if [ "$key" != "w" ] && [ "$key" != "a" ] && [ "$key" != "s" ] && [ "$key" != "d" ]
+then
+boardrow=$(($row - 1))
+boardcol=$(($col - 1))
+row=2
+col=2
+fi
+done
+}
+game5() {
 echo "Get three in a row to win"
 echo
 echo "Press enter to continue"
@@ -370,28 +496,28 @@ done
 while true
 do
 clear
-echo "          3 Player Tic Tac Toe"
-echo "               $turn's turn"
-echo
-echo "       │       │       │       │"
-echo "   ${matrix[0]}   │   ${matrix[1]}   │   ${matrix[2]}   │   ${matrix[3]}   │   ${matrix[4]}"
-echo "       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │"
-echo "   ${matrix[5]}   │   ${matrix[6]}   │   ${matrix[7]}   │   ${matrix[8]}   │   ${matrix[9]}"
-echo "       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │"
-echo "   ${matrix[10]}   │   ${matrix[11]}   │   ${matrix[12]}   │   ${matrix[13]}   │   ${matrix[14]}"
-echo "       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │"
-echo "   ${matrix[15]}   │   ${matrix[16]}   │   ${matrix[17]}   │   ${matrix[18]}   │   ${matrix[19]}"
-echo "       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │"
-echo "   ${matrix[20]}   │   ${matrix[21]}   │   ${matrix[22]}   │   ${matrix[23]}   │   ${matrix[24]}"
-echo "       │       │       │       │"
+echo "          3 Player Tic Tac Toe
+               $turn's turn
+
+       │       │       │       │
+   ${matrix[0]}   │   ${matrix[1]}   │   ${matrix[2]}   │   ${matrix[3]}   │   ${matrix[4]}
+       │       │       │       │
+───────┼───────┼───────┼───────┼───────
+       │       │       │       │
+   ${matrix[5]}   │   ${matrix[6]}   │   ${matrix[7]}   │   ${matrix[8]}   │   ${matrix[9]}
+       │       │       │       │
+───────┼───────┼───────┼───────┼───────
+       │       │       │       │
+   ${matrix[10]}   │   ${matrix[11]}   │   ${matrix[12]}   │   ${matrix[13]}   │   ${matrix[14]}
+       │       │       │       │
+───────┼───────┼───────┼───────┼───────
+       │       │       │       │
+   ${matrix[15]}   │   ${matrix[16]}   │   ${matrix[17]}   │   ${matrix[18]}   │   ${matrix[19]}
+       │       │       │       │
+───────┼───────┼───────┼───────┼───────
+       │       │       │       │
+   ${matrix[20]}   │   ${matrix[21]}   │   ${matrix[22]}   │   ${matrix[23]}   │   ${matrix[24]}
+       │       │       │       │"
 win=$(detect 3 5)
 if [ "$win" != "" ]
 then
@@ -407,7 +533,7 @@ read -sn 1 key
 move 5
 done
 }
-game5() {
+game6() {
 echo "Get three in a row to win"
 echo
 echo "Press enter to continue"
@@ -419,32 +545,32 @@ done
 while true
 do
 clear
-echo "             3 Player Tic Tac BOX!"
-echo "                   $turn's turn"
-echo
-echo "       │       │       │       │       │"
-echo "   ${matrix[0]}   │   ${matrix[1]}   │   ${matrix[2]}   │   ${matrix[3]}   │   ${matrix[4]}   │   ${matrix[5]}"
-echo "       │       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │       │"
-echo "   ${matrix[6]}   │   ${matrix[7]}   │   ${matrix[8]}   │   ${matrix[9]}   │   ${matrix[10]}   │   ${matrix[11]}"
-echo "       │       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │       │"
-echo "   ${matrix[12]}   │   ${matrix[13]}   │   ${matrix[14]}   │   ${matrix[15]}   │   ${matrix[16]}   │   ${matrix[17]}"
-echo "       │       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │       │"
-echo "   ${matrix[18]}   │   ${matrix[19]}   │   ${matrix[20]}   │   ${matrix[21]}   │   ${matrix[22]}   │   ${matrix[23]}"
-echo "       │       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │       │"
-echo "   ${matrix[24]}   │   ${matrix[25]}   │   ${matrix[26]}   │   ${matrix[27]}   │   ${matrix[28]}   │   ${matrix[29]}"
-echo "       │       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │       │"
-echo "   ${matrix[30]}   │   ${matrix[31]}   │   ${matrix[32]}   │   ${matrix[33]}   │   ${matrix[34]}   │   ${matrix[35]}"
-echo "       │       │       │       │       │"
+echo "             3 Player Tic Tac BOX!
+                   $turn's turn
+
+       │       │       │       │       │
+   ${matrix[0]}   │   ${matrix[1]}   │   ${matrix[2]}   │   ${matrix[3]}   │   ${matrix[4]}   │   ${matrix[5]}
+       │       │       │       │       │
+───────┼───────┼───────┼───────┼───────┼───────
+       │       │       │       │       │
+   ${matrix[6]}   │   ${matrix[7]}   │   ${matrix[8]}   │   ${matrix[9]}   │   ${matrix[10]}   │   ${matrix[11]}
+       │       │       │       │       │
+───────┼───────┼───────┼───────┼───────┼───────
+       │       │       │       │       │
+   ${matrix[12]}   │   ${matrix[13]}   │   ${matrix[14]}   │   ${matrix[15]}   │   ${matrix[16]}   │   ${matrix[17]}
+       │       │       │       │       │
+───────┼───────┼───────┼───────┼───────┼───────
+       │       │       │       │       │
+   ${matrix[18]}   │   ${matrix[19]}   │   ${matrix[20]}   │   ${matrix[21]}   │   ${matrix[22]}   │   ${matrix[23]}
+       │       │       │       │       │
+───────┼───────┼───────┼───────┼───────┼───────
+       │       │       │       │       │
+   ${matrix[24]}   │   ${matrix[25]}   │   ${matrix[26]}   │   ${matrix[27]}   │   ${matrix[28]}   │   ${matrix[29]}
+       │       │       │       │       │
+───────┼───────┼───────┼───────┼───────┼───────
+       │       │       │       │       │
+   ${matrix[30]}   │   ${matrix[31]}   │   ${matrix[32]}   │   ${matrix[33]}   │   ${matrix[34]}   │   ${matrix[35]}
+       │       │       │       │       │"
 win=$(detect 4 6)
 for ((i=1; i<=5; i++))
 do
@@ -502,7 +628,7 @@ read -sn 1 key
 move 6
 done
 }
-game6() {
+game7() {
 echo "Get four in a row to win"
 echo
 echo "Press enter to continue"
@@ -515,32 +641,32 @@ row=7
 while true
 do
 clear
-echo "                        Gravity"
-echo "                       $turn's turn"
-echo
-echo "       │       │       │       │       │       │"
-echo "   ${matrix[7]}   │   ${matrix[8]}   │   ${matrix[9]}   │   ${matrix[10]}   │   ${matrix[11]}   │   ${matrix[12]}   │   ${matrix[13]}"
-echo "       │       │       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │       │       │"
-echo "   ${matrix[14]}   │   ${matrix[15]}   │   ${matrix[16]}   │   ${matrix[17]}   │   ${matrix[18]}   │   ${matrix[19]}   │   ${matrix[20]}"
-echo "       │       │       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │       │       │"
-echo "   ${matrix[21]}   │   ${matrix[22]}   │   ${matrix[23]}   │   ${matrix[24]}   │   ${matrix[25]}   │   ${matrix[26]}   │   ${matrix[27]}"
-echo "       │       │       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │       │       │"
-echo "   ${matrix[28]}   │   ${matrix[29]}   │   ${matrix[30]}   │   ${matrix[31]}   │   ${matrix[32]}   │   ${matrix[33]}   │   ${matrix[34]}"
-echo "       │       │       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │       │       │"
-echo "   ${matrix[35]}   │   ${matrix[36]}   │   ${matrix[37]}   │   ${matrix[38]}   │   ${matrix[39]}   │   ${matrix[40]}   │   ${matrix[41]}"
-echo "       │       │       │       │       │       │"
-echo "───────┼───────┼───────┼───────┼───────┼───────┼───────"
-echo "       │       │       │       │       │       │"
-echo "   ${matrix[42]}   │   ${matrix[43]}   │   ${matrix[44]}   │   ${matrix[45]}   │   ${matrix[46]}   │   ${matrix[47]}   │   ${matrix[48]}"
-echo "       │       │       │       │       │       │"
+echo "                        Gravity
+                       $turn's turn
+
+       │       │       │       │       │       │
+   ${matrix[7]}   │   ${matrix[8]}   │   ${matrix[9]}   │   ${matrix[10]}   │   ${matrix[11]}   │   ${matrix[12]}   │   ${matrix[13]}
+       │       │       │       │       │       │
+───────┼───────┼───────┼───────┼───────┼───────┼───────
+       │       │       │       │       │       │
+   ${matrix[14]}   │   ${matrix[15]}   │   ${matrix[16]}   │   ${matrix[17]}   │   ${matrix[18]}   │   ${matrix[19]}   │   ${matrix[20]}
+       │       │       │       │       │       │
+───────┼───────┼───────┼───────┼───────┼───────┼───────
+       │       │       │       │       │       │
+   ${matrix[21]}   │   ${matrix[22]}   │   ${matrix[23]}   │   ${matrix[24]}   │   ${matrix[25]}   │   ${matrix[26]}   │   ${matrix[27]}
+       │       │       │       │       │       │
+───────┼───────┼───────┼───────┼───────┼───────┼───────
+       │       │       │       │       │       │
+   ${matrix[28]}   │   ${matrix[29]}   │   ${matrix[30]}   │   ${matrix[31]}   │   ${matrix[32]}   │   ${matrix[33]}   │   ${matrix[34]}
+       │       │       │       │       │       │
+───────┼───────┼───────┼───────┼───────┼───────┼───────
+       │       │       │       │       │       │
+   ${matrix[35]}   │   ${matrix[36]}   │   ${matrix[37]}   │   ${matrix[38]}   │   ${matrix[39]}   │   ${matrix[40]}   │   ${matrix[41]}
+       │       │       │       │       │       │
+───────┼───────┼───────┼───────┼───────┼───────┼───────
+       │       │       │       │       │       │
+   ${matrix[42]}   │   ${matrix[43]}   │   ${matrix[44]}   │   ${matrix[45]}   │   ${matrix[46]}   │   ${matrix[47]}   │   ${matrix[48]}
+       │       │       │       │       │       │"
 win=$(detect 4 7)
 if [ "$win" != "" ]
 then
@@ -572,7 +698,7 @@ done
 start() {
 stty echo
 clear
-games=("Tic-Tac-Toe" "Toe-Tac-Tic" "Toe-Tac-BOX!" "Super_Tic-Tac-Toe" "3-Player_Tic-Tac-Toe" "3-Player_Tic-Tac-BOX!" "Gravity")
+games=("Tic-Tac-Toe" "Tic-Tac-Toe_4x4" "Toe-Tac-Tic" "Toe-Tac-BOX!" "Super_Tic-Tac-Toe" "3-Player_Tic-Tac-Toe" "3-Player_Tic-Tac-BOX!" "Gravity")
 output=0
 menu "Choose a game:" games[@]
 clear
@@ -595,12 +721,13 @@ boardcol=1
 case $output in
 1) game1;;
 2) game2;;
-3) game2;;
+3) game3;;
 4) game3;;
 5) game4;;
 6) game5;;
 7) game6;;
-8) exit
+8) game7;;
+9) exit
 esac
 }
 cd "$(dirname "$0")"
