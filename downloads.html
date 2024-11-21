@@ -87,14 +87,14 @@
     <p>Only works on OS that can run BASH (Mostly Macintosh)</p>
     <p>The activation command will only work if you save the file you want to download to the Downloads folder</p>
     <p>* - uses dtar Functions:</p>
-    <a href="https://raw.githubusercontent.com/dtar-github/bash/refs/heads/main/dtar_functions" download="https://raw.githubusercontent.com/dtar-github/bash/refs/heads/main/dtar_functions" class="button bash">dtar Functions</a>
+    <button onclick="download('https:/\/raw.githubusercontent.com/dtar-github/bash/refs/heads/main/dtar_functions', 'dtar_functions')" class="button bash">dtar Functions</button>
     <p>
     <a href="https://raw.githubusercontent.com/dtar-github/bash/refs/heads/main/dtar_functions">View Raw</a><br><br>
     Activate using this command in the terminal:
     <a class="command">chmod +x Downloads/dtar_functions</a></p>
     <hr>
     <br>
-    <a href="https://raw.githubusercontent.com/dtar-github/bash/refs/heads/main/Toe-Tac-Tic" download="https://raw.githubusercontent.com/dtar-github/bash/refs/heads/main/Toe-Tac-Tic" class="button bash">Toe-Tac-Tic</a> *
+    <button onclick="download('https:/\/raw.githubusercontent.com/dtar-github/bash/refs/heads/main/Toe-Tac-Tic', 'Toe-Tac-Tic')" class="button bash">Toe-Tac-Tic</button> *
     <br>
     <p>
     <a href="https://raw.githubusercontent.com/dtar-github/bash/refs/heads/main/Toe-Tac-Tic">View Raw</a><br><br>
@@ -104,7 +104,7 @@
     <br><br>
     <hr>
     <br>
-    <a href="https://raw.githubusercontent.com/dtar-github/bash/refs/heads/main/2048" download="https://raw.githubusercontent.com/dtar-github/bash/refs/heads/main/2048" class="button bash">2048</a>
+    <button onclick="download('https:/\/raw.githubusercontent.com/dtar-github/bash/refs/heads/main/2048', '2048')" class="button bash">2048</button>
     <br>
     <p>
     <a href="https://raw.githubusercontent.com/dtar-github/bash/refs/heads/main/2048">View Raw</a><br><br>
@@ -114,7 +114,7 @@
     <br><br>
     <hr>
     <br>
-    <a href="https://raw.githubusercontent.com/dtar-github/bash/refs/heads/main/Wordle" download="https://raw.githubusercontent.com/dtar-github/bash/refs/heads/main/Wordle" class="button bash">Wordle</a> *
+    <button onclick="download('https:/\/raw.githubusercontent.com/dtar-github/bash/refs/heads/main/Wordle', 'Wordle')" class="button bash">Wordle</button> *
     <br>
     <p>
     <a href="https://raw.githubusercontent.com/dtar-github/bash/refs/heads/main/Wordle">View Raw</a><br><br>
@@ -163,6 +163,16 @@
     <button id="downloadButton">Download HTML</button>
     </div>
     <script>
+        function download(url, name) {
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    const tempLink = document.createElement("a");
+                    tempLink.href = URL.createObjectURL(new Blob([blob], { type: "application/octet-stream" }));
+                    tempLink.download = name;
+                    tempLink.click();
+                });
+        };
         document.getElementById('downloadButton').addEventListener('click', function() {
             var htmlCode = "<!DOCTYPE html><html><head><title>dtar's HTML Runner</title><style>#container {display: flex;}#text {resize: none;}#resizeLabel {margin-left: 10px;}</style></head><body><div id=\"container\"><div><label for=\"text\">Enter HTML Code:</label><br><textarea id=\"text\" rows=\"4\" cols=\"50\"></textarea></div><div><br><input type=\"checkbox\" id=\"resizeSwitch\" onchange=\"toggleResize()\"></div></div><button onclick=\"downloadHTML()\">Download HTML</button><button onclick=\"document.getElementById('result').innerHTML=document.getElementById('text').value;\">Run Code</button><hr><div id=\"result\"></div><script>function dtarHTML(){var html=document.getElementById('text').value;document.getElementById('result').innerHTML=html;}function downloadHTML() {var htmlContent = document.getElementById('text').value;var blob = new Blob([htmlContent], { type: 'text/html' });var a = document.createElement('a');a.href = window.URL.createObjectURL(blob);a.download = 'download.html';document.body.appendChild(a);a.click();document.body.removeChild(a);}function toggleResize() {var textArea = document.getElementById('text');var resizeSwitch = document.getElementById('resizeSwitch');textArea.style.resize = resizeSwitch.checked ? 'both' : 'none';}<\/script></body></html>";
             var blob = new Blob([htmlCode], { type: 'text/html' });
