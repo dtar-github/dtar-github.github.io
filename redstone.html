@@ -54,20 +54,20 @@
     </div>
     <script>
         document.getElementById('download').addEventListener('click', function() {
-            var htmlCode = ''
-            fetch('generator')
+            let htmlCode
+            fetch('/generator')
                 .then(response => response.text())
                 .then(data => {
                     htmlCode = data;
                     console.log(htmlCode);
+                    var blob = new Blob([htmlCode], { type: 'text/html' });
+                    var a = document.createElement('a');
+                    a.download = 'devdoors_redstone_generator.html';
+                    a.href = URL.createObjectURL(blob);
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
                 })
-            var blob = new Blob([htmlCode], { type: 'text/html' });
-            var a = document.createElement('a');
-            a.download = 'devdoors_redstone_generator.html';
-            a.href = URL.createObjectURL(blob);
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
         });
     </script>
     <script src="darkmode.js"></script>
