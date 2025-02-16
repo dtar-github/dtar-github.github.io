@@ -45,12 +45,31 @@
     <div class="left">
         <h3><a href="/redstone:generator">The Redstone Generator</a></h3>
         <p>The redstone generator generates redstone components that have certain properties. It is very useful when you're trying to figure out what component to use that needs to do something specific. The first checkbox indicates whether that property is filtering out the components. If it is off, it doesn't filter anything. The second checkbox determines whether the property is true of false. For example, if the first checkbox is on and the second one is off, it filters through the components that don't have that property. If the second one is on, it will filter the components that have that property. If the first checkbox is off, it won't filter out any components for that property.</p>
+        <p style="text-align: center"><button id="download" class="button">Download</button></p>
     </div>
     <div class="right">
         <h3><a href="/redstone:dictionary">Redstone Terminology</a></h3>
         <p>This page is basically a redstone dictionary. I made it to help beginner redstoners learn redstone and understand the pros.</p>
         <p>Submit a new term <a href="https://docs.google.com/forms/d/e/1FAIpQLScvOayUEmBeOWQf2328-qxsT_4KcH0NXF6n5sCafEAgJHAK5Q/viewform">here</a>.</p>
     </div>
+    <script>
+        document.getElementById('download').addEventListener('click', function() {
+            var htmlCode = ''
+            fetch('generator')
+                .then(response => response.text())
+                .then(data => {
+                    htmlCode = data;
+                    console.log(htmlCode);
+                })
+            var blob = new Blob([htmlCode], { type: 'text/html' });
+            var a = document.createElement('a');
+            a.download = 'devdoors_redstone_generator.html';
+            a.href = URL.createObjectURL(blob);
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    </script>
     <script src="darkmode.js"></script>
 </body>
 </html>
