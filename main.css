@@ -63,7 +63,7 @@ nav a:hover {
     color: #492400;
 }
 .geometry {
-    background-color: #ff0000;
+    background-color: #ff5555;
     color: #000000;
 }
 .slither {
@@ -73,4 +73,8 @@ nav a:hover {
 .portal {
     background-color: #555555;
     color: #81ff7f;
+}
+.blast {
+    background-color: #1f0068;
+    color: #ff5555;
 }
