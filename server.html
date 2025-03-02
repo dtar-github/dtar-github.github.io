@@ -89,7 +89,9 @@
     <div class="bottom">
         <b>Server Address: </b><span>DevDoors.aternos.me </span><span><button id="Copy" onclick="copy()">Copy</button></span>
         <p style="font-size:20px">
-        If the server is off, you can start it manually:
+        If the server is offline, join the lobby: <b>exchange-involve.gl.joinmc.link </b> <button onclick="lobby()">Copy</button><br>
+        <br>
+        If this doesn't work, you can start it manually:
         <br>
         Go to <a href="https://aternos.org/servers/" target="_blank" rel="noopener noreferrer">this page</a> and sign in
         with the username "DevDoorsCommunity" and the password "123456". Then click DevDoors.aternos.me and then the
@@ -104,6 +106,9 @@
     <script>
         function copy() {
             navigator.clipboard.writeText("DevDoors.aternos.me")
+        }
+        function lobby() {
+            navigator.clipboard.writeText("exchange-involve.gl.joinmc.link")
         }
     </script>
     <script src="darkmode.js"></script>
