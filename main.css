@@ -37,6 +37,9 @@ nav span {
     filter: invert(1) hue-rotate(175deg) brightness(0.9) contrast(200%) saturate(150%);
     background-color: #000000;
 }
+.command {
+    font-family: monospace;
+}
 nav a:hover {
     background-color: #555;
     transition: background-color 0.3s;
