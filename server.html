@@ -16,13 +16,13 @@
             overflow: scroll;
             width: calc(50% - 80px);
         }
-        img {
+        .right {
             float: left;
             margin-left: 40px;
             overflow: hidden;
             width: auto;
             max-width: calc(50% - 40px);
-            max-height: 400px;
+            max-height: 420px;
             object-fit: contain;
         }
         .center {
@@ -46,7 +46,7 @@
             margin-top: 0;
         }
         span {
-            padding: 20px;
+            padding-left: 20px;
         }
         ul {
             font-size: 20px;
@@ -55,9 +55,12 @@
         #Copy {
             font-size: 30px;
             padding: 5px;
-            border-radius: 10px;
         }
-        #Copy:active {
+        button {
+            border-radius: 15px;
+            background-color: lightgray;
+        }
+        button:active {
             background-color: #ffffff;
         }
         .dark {
@@ -70,6 +73,16 @@
         }
         .dark nav a {
             color: white;
+        }
+        img:not(.right) {
+            width: calc(100vw - 60px);
+        }
+        .scrolling {
+            overflow: scroll;
+            white-space: nowrap;
+            padding: 10px;
+            width: calc(100% - 60px);
+            margin: 20px;
         }
     </style>
 </head>
@@ -92,7 +105,7 @@
         <p>For those seeking competitive fun, dive into action-packed minigames like TNT Step and Spleef, where strategy and skill will determine your victory.</p>
         <p>Join DevDoors and a community of fellow redstoners and other players on DevCraft, where every block holds a new adventure and every command block powers limitless possibilities!</p>
     </div>
-    <img src="devcraft/server.png" width="100%" height="100%"></img>
+    <img class="right" src="devcraft/server.png" width="100%" height="100%"></img>
     <div class="center">
         <b>Server Address: </b><span>DevDoors.aternos.me </span><span><button id="Copy" onclick="copy()">Copy</button></span>
         <p style="font-size:20px">
@@ -118,7 +131,20 @@
         </ul>
         <p style="font-size:15px">A violation of these rules may result in a temporary ban</p>
     </div>
+    <div class="scrolling">
+        <img src="devcraft/lobby.png"></img>
+        <img src="devcraft/games.png"></img>
+        <img src="devcraft/skyblock1.png"></img>
+        <img src="devcraft/skyblock2.png"></img>
+        <img src="devcraft/volcano.png"></img>
+        <img src="devcraft/parkour.png"></img>
+    </div>
     <script>
+        let scrolling = document.querySelector(".scrolling");
+        scrolling.addEventListener("wheel", function(event) {
+            scrolling.scrollLeft += event.deltaY; 
+            event.preventDefault();
+        });
         function copy() {
             navigator.clipboard.writeText("DevDoors.aternos.me")
         }
