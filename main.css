@@ -1,8 +1,23 @@
 * {
     scrollbar-width: none;
+    transition: background-color 0.3s ease, border 0.3s ease, color 0.1s ease-out;
 }
-body {
-    transition: all 0.3s ease;
+a {
+    color: #77f;
+}
+.dark {
+    filter: none;
+    color: white;
+    background-color: #000;
+}
+.dark a {
+    border-color: #fff;
+}
+.dark button {
+    border-color: #fff;
+}
+.dark nav a {
+    color: white;
 }
 h1,h2,h3 {
     text-align: center;
@@ -13,7 +28,7 @@ h1,h2,h3 {
     border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
-    border: 2px solid #000000;
+    border: 2px solid #000;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -33,10 +48,6 @@ nav a {
 nav span {
     color: white;
 }
-.dark {
-    filter: invert(1) hue-rotate(175deg) brightness(0.9) contrast(200%) saturate(150%);
-    background-color: #000000;
-}
 .command {
     font-family: monospace;
 }
@@ -45,42 +56,42 @@ nav a:hover {
     transition: background-color 0.3s;
 }
 .red:hover {
-    background-color: #9b2b2b;
+    background-color: #933;
     transition: background-color 0.3s;
 }
 .green:hover {
-    background-color: #3c9b2b;
+    background-color: #392;
     transition: background-color 0.3s;
 }
 .spaceship {
-    background-color: #00003d;
-    color: #ffffff;
+    background-color: #004;
+    color: #fff;
 }
 .grapple {
-    background-color: #81ff7f;
-    color: #000000;
+    background-color: #8f8;
+    color: #000;
 }
 .toetactic {
-    background-color: #0099ff;
-    color: #000000;
+    background-color: #09f;
+    color: #000;
 }
 .robot {
-    background-color: #00ff2f;
-    color: #492400;
+    background-color: #0f3;
+    color: #520;
 }
 .geometry {
-    background-color: #ff5555;
-    color: #000000;
+    background-color: #f55;
+    color: #000;
 }
 .slither {
-    background-color: #1f0068;
-    color: #f2ff00;
+    background-color: #206;
+    color: #ff0;
 }
 .portal {
-    background-color: #555555;
-    color: #81ff7f;
+    background-color: #555;
+    color: #8f8;
 }
 .blast {
-    background-color: #1f0068;
-    color: #ff5555;
+    background-color: #206;
+    color: #f55;
 }
