@@ -250,12 +250,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       scaffolding.setUsername("player####".replace(/#/g, () => Math.floor(Math.random() * 10)));
       scaffolding.setAccentColor("#ff4c4c");
 
-      try {
-        scaffolding.addCloudProvider(new Scaffolding.Cloud.WebSocketProvider(["wss://clouddata.turbowarp.org","wss://clouddata.turbowarp.xyz"], "1195141563"));
-      } catch (error) {
-        console.error(error);
-      }
-
       const greenFlagButton = document.createElement('img');
       greenFlagButton.src = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.63 17.5"><path d="M.75 2a6.44 6.44 0 017.69 0h0a6.44 6.44 0 007.69 0v10.4a6.44 6.44 0 01-7.69 0h0a6.44 6.44 0 00-7.69 0" fill="#4cbf56" stroke="#45993d" stroke-linecap="round" stroke-linejoin="round"/><path stroke-width="1.5" fill="#4cbf56" stroke="#45993d" stroke-linecap="round" stroke-linejoin="round" d="M.75 16.75v-16"/></svg>');
       greenFlagButton.className = 'control-button control-button-highlight green-flag-button';
@@ -487,6 +481,49 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       }
     };
     run().catch(handleError);
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-database-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyD9x-mEUuU1hgsEaYU0NMi0Kfs-u0yI3qU",
+      authDomain: "cloud-variable-storage.firebaseapp.com",
+      databaseURL: "https://cloud-variable-storage-default-rtdb.firebaseio.com",
+      projectId: "cloud-variable-storage",
+      storageBucket: "cloud-variable-storage.firebasestorage.app",
+      messagingSenderId: "77931689248",
+      appId: "1:77931689248:web:4deb650261b49bd13dd345",
+      measurementId: "G-P5793FFCE5"
+    };
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+    function getVariableByName(name) {
+      const targets = window.vm.runtime.targets;
+      const stage = targets.find(t => t.isStage);
+      if (!stage) return null;
+      const variable = Object.values(stage.variables).find(v => v.name === name);
+      return variable || null;
+    }
+    const checkVM = setInterval(() => {
+      if (window.vm && window.vm.runtime) {
+        clearInterval(checkVM);
+        setInterval(() => {
+          const stage = window.vm.runtime.getTargetForStage();
+          const worldhighscore = getVariableByName('☁ WR');
+          if (worldhighscore) {
+            db.ref('blockblast/wr').set(worldhighscore.value);
+          }
+        }, 1000);
+        db.ref('blockblast/wr').on('value', (snapshot) => {
+          const newVal = snapshot.val();
+          const stage = window.vm.runtime.getTargetForStage();
+          const worldhighscore = getVariableByName('☁ WR');
+          if (worldhighscore && worldhighscore.value !== newVal) {
+            worldhighscore.value = newVal;
+          }
+        });
+      }
+    }, 500);
   </script>
 </body>
 </html>
