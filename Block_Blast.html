@@ -504,30 +504,34 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     const app = firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
     function getVariableByName(name) {
-      const targets = window.vm.runtime.targets;
-      const stage = targets.find(t => t.isStage);
+      const stage = window.vm.runtime.getTargetForStage();
       if (!stage) return null;
-      const variable = Object.values(stage.variables).find(v => v.name === name);
-      return variable || null;
+      const variableId = Object.keys(stage.variables).find(key => stage.variables[key].name === name);
+      return variableId ? stage.variables[variableId] : null;
     }
     const checkVM = setInterval(() => {
       if (window.vm && window.vm.runtime) {
         clearInterval(checkVM);
-        setInterval(() => {
-          const stage = window.vm.runtime.getTargetForStage();
-          const worldhighscore = getVariableByName('WR');
-          if (worldhighscore) {
-            db.ref('blockblast/wr').set(worldhighscore.value);
-          }
-        }, 1000);
-        db.ref('blockblast/wr').on('value', (snapshot) => {
-          const newVal = snapshot.val();
-          const stage = window.vm.runtime.getTargetForStage();
-          const worldhighscore = getVariableByName('WR');
-          if (worldhighscore && worldhighscore.value !== newVal) {
-            worldhighscore.value = newVal;
+        let lastWR = null; 
+        const wrRef = db.ref('blockblast/wr');
+        wrRef.on('value', (snapshot) => {
+          const cloudWR = snapshot.val();
+          const localWRVar = getVariableByName('WR');
+          if (localWRVar && cloudWR !== null) {
+            localWRVar.value = cloudWR;
+            lastWR = cloudWR;
           }
         });
+        setInterval(() => {
+          const localWRVar = getVariableByName('WR');
+          if (localWRVar) {
+            const currentLocalWR = localWRVar.value;
+            if (currentLocalWR !== lastWR) {
+              lastWR = currentLocalWR;
+              wrRef.set(currentLocalWR);
+            }
+          }
+        }, 250);
       }
     }, 500);
   </script>
