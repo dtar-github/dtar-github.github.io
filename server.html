@@ -5,8 +5,20 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="main.css">
     <style>
+        body {
+            background-image: url('devcraft/server.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
         b {
             text-align: center;
+        }
+        .top {
+            width: 300px;
+            margin: auto;
+            margin-top: 20px;
         }
         .container {
             display: grid;
@@ -33,6 +45,13 @@
         div, img, video {
             border: 1px solid;
             border-radius: 30px;
+        }
+        div:not(.container) {
+            background-color: rgba(255,255,255,0.4);
+            backdrop-filter: blur(10px);
+        }
+        .dark div:not(.container) {
+            background-color: rgba(0,0,0,0.6);
         }
         video {
             margin: 20px;
@@ -80,9 +99,10 @@
         <a href="/downloads">Downloads</a>
         <a class="green" href="/minecraft">Minecraft</a>
         <a href="/redstone" class="red">Redstone</a>
+        <a href="/desmos" class="green">Desmos</a>
         <input type="checkbox" id="dark"><span style="padding:0px">Dark Mode</span>
     </nav>
-    <h1>DevCraft</h1><br>
+    <div class="top"><h1>DevCraft</h1></div>
     <div class="container">
         <div class="left" id="left">
             <h3><b>About DevCraft</b></h3>
@@ -98,9 +118,6 @@
     </div>
     <div class="center">
         <b>Server Address: </b><span>DevDoors.exaroton.me </span><span><button id="Copy" onclick="copy()">Copy</button></span>
-        <p style="font-size:20px">
-        If the server is offline, join the lobby: <b>exchange-involve.gl.joinmc.link </b> <button onclick="lobby()">Copy</button><br>
-        </p>
     </div>
     <video src="devcraft/DevCraft.mp4" width="100%" controls></video>
     <div class="center bottom">
@@ -131,9 +148,6 @@
         function copy() {
             navigator.clipboard.writeText("DevDoors.exaroton.me")
         }
-        function lobby() {
-            navigator.clipboard.writeText("exchange-involve.gl.joinmc.link")
-        }
         var left = document.getElementById("left");
         var right = document.getElementById("right");
         function height() {
@@ -141,6 +155,8 @@
         }
         height();
         window.onresize = height;
+        bgimages = ["server.png", "lobby.png", "games.png", "skyblock1.png", "skyblock2.png", "volcano.png", "parkour.png"]
+        document.body.style.backgroundImage = `url('devcraft/${bgimages[Math.floor(Math.random()*bgimages.length)]}')`
     </script>
     <script src="darkmode.js"></script>
 </body>

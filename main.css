@@ -1,9 +1,15 @@
+:root {
+    --link-color: #009;
+}
+.dark {
+    --link-color: #77f;
+}
 * {
     scrollbar-width: none;
     transition: background-color 0.3s ease, border 0.3s ease, color 0.1s ease-out;
 }
 a {
-    color: #77f;
+    color: var(--link-color);
 }
 .dark {
     filter: none;
@@ -63,6 +69,13 @@ nav a:hover {
     background-color: #392;
     transition: background-color 0.3s;
 }
+.desmos {
+    background-color: #008c0e;
+    color: #ffffff;
+}
+.desmos:hover {
+    background-color: #00c714;
+}
 .spaceship {
     background-color: #004;
     color: #fff;
@@ -102,4 +115,8 @@ nav a:hover {
 .pixel {
     background-color: #f70;
     color: #520;
+}
+.pipes {
+    background-color: #222;
+    color: #bbb;
 }

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Midi to Desmos List Converter</title>
+    <style>
+        textarea {
+            width: 50%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+<h1>Midi to Desmos List Converter</h1>
+Made by <a href="https://www.youtube.com/channel/UC7dk5ri6JlFCCTTUySTi02g">DevDoors</a>
+<p>Upload a MIDI file<br>
+<input id="input" type="file" accept=".mid,.midi"></p>
+<button onclick="convert()">Convert</button>
+<p>Desmos List (If this output remains blank, the MIDI file is not compatible or could not be converted)<br>
+<textarea id="output" readonly></textarea><br>
+<button onclick="copy()">Copy</button></p>
+<p id="info"></p>
+<p>Play your MIDI file on this graph: <a href="https://www.desmos.com/calculator/snfb0s98oy">Music Player</a>
+<br>Paste your points into the <i>p</i> variable.</p>
+<script>
+const input = document.getElementById("input")
+const output = document.getElementById("output")
+const info = document.getElementById("info")
+
+async function convert() {
+    const file = input.files[0]
+    const parsed = parse(await file.arrayBuffer())
+
+    const pairs = parsed.notes.map(n => {
+        return [n.tick / parsed.ticksPerBeat, n.note - 69]
+    })
+
+    const list = [...new Set(pairs.map(([x,y]) => `(${x.toFixed(4)},${y})`))]
+
+    output.textContent = "[" + list.join(",") + "]"
+    info.textContent = list.length + " notes"
+}
+
+function copy() {
+    navigator.clipboard.writeText(output.textContent)
+}
+
+function parse(binary) {
+    const data = new DataView(binary)
+
+    const ticksPerBeat = data.getUint16(12, false)
+    const notes = []
+    const tempos = []
+
+    let index = 8 + data.getUint32(4, false)
+
+    const tracks = data.getUint16(10, false)
+
+    for (let t=0; t < tracks; t++) {
+        index += 4
+        const trackLength = data.getUint32(index, false)
+        index += 4
+        const trackEnd = index + trackLength
+        const off = {offset: index}
+
+        let tick = 0
+        while (off.offset < trackEnd) {
+            tick += readVarLen(data, off)
+            let event = data.getUint8(off.offset++, false)
+
+            if (event === 0xFF) {
+                const type = data.getUint8(off.offset++, false)
+                const length = readVarLen(data, off)
+
+                if (type === 0x51 && length == 3) {
+                    const b1 = data.getUint8(off.offset++, false)
+                    const b2 = data.getUint8(off.offset++, false)
+                    const b3 = data.getUint8(off.offset++, false)
+                    const b = ((b1 << 16) | (b2 << 8) | b3)
+                    tempos.push({tick: tick, b})
+                } else {
+                    off.offset += length
+                }
+            } else if (event === 0xF0 || event === 0xF7) {
+                const length = readVarLen(data, off)
+                off.offset += length
+            } else {
+                const type = (event & 0xF0) >> 4
+                let data1, data2
+
+                if (type === 0xC || type === 0xD) {
+                    data1 = data.getUint8(off.offset++, false)
+                } else {
+                    data1 = data.getUint8(off.offset++, false)
+                    data2 = data.getUint8(off.offset++, false)
+                }
+
+                if (type === 0x9 && data2 > 0) {
+                    notes.push({tick: tick, note: data1})
+                }
+            }
+        }
+
+        index = trackEnd
+    }
+
+    return {ticksPerBeat, notes, tempos}
+}
+
+function readVarLen(dataview, offsetObj){
+    let result = 0
+    while (true) {
+        let b = dataview.getUint8(offsetObj.offset++)
+        result = (result << 7) | (b & 0x7F)
+        if ((b & 0x80) === 0) break
+    }
+    return result
+}
+</script>
+</body>
+</html>
