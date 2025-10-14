@@ -63,6 +63,13 @@ nav a:hover {
     background-color: #392;
     transition: background-color 0.3s;
 }
+.desmos {
+    background-color: #008c0e;
+    color: #ffffff;
+}
+.desmos:hover {
+    background-color: #00c714;
+}
 .spaceship {
     background-color: #004;
     color: #fff;
