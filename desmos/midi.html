@@ -3,10 +3,14 @@
 <head>
     <title>Midi to Desmos List Converter</title>
     <style>
+        textarea {
+            resize: both;
+        }
     </style>
 </head>
 <body>
 <h1>Midi to Desmos List Converter</h1>
+Made by <a href="https://www.youtube.com/channel/UC7dk5ri6JlFCCTTUySTi02g">DevDoors</a>
 <p>Upload a MIDI file<br>
 <input id="input" type="file" accept=".mid,.midi"></p>
 <button onclick="convert()">Convert</button>
@@ -14,6 +18,8 @@
 <textarea id="output" readonly></textarea><br>
 <button onclick="copy()">Copy</button></p>
 <p id="info"></p>
+<p>Play your MIDI file on this graph: <a href="https://www.desmos.com/calculator/snfb0s98oy">Music Player</a>
+<br>Paste your points into the <i>p</i> variable.</p>
 <script>
 const input = document.getElementById("input")
 const output = document.getElementById("output")
