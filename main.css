@@ -3,7 +3,7 @@
     transition: background-color 0.3s ease, border 0.3s ease, color 0.1s ease-out;
 }
 a {
-    color: #77f;
+    color: #009;
 }
 .dark {
     filter: none;
@@ -12,6 +12,7 @@ a {
 }
 .dark a {
     border-color: #fff;
+    color: #77f;
 }
 .dark button {
     border-color: #fff;
