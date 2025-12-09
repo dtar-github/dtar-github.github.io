@@ -12,31 +12,35 @@
             background-position: center;
             background-attachment: fixed;
         }
+        main {
+            padding: 20px;
+        }
+        main > * {
+            margin-top: 20px;
+        }
         b {
             text-align: center;
         }
         .top {
             width: 300px;
             margin: auto;
-            margin-top: 20px;
+            margin-top: 30px;
         }
         .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             border: none;
-            margin: 20px;
             gap: 20px;
         }
-        .left {
+        .about {
             padding: 20px;
             overflow: scroll;
         }
-        .right {
+        .image {
             padding: 0px;
             height: auto;
         }
         .center {
-            margin: 20px;
             width: auto;
             font-size: 30px;
             text-align: center;
@@ -54,12 +58,7 @@
             background-color: rgba(0,0,0,0.6);
         }
         video {
-            margin: 20px;
-            width: calc(100% - 40px);
             overflow: hidden;
-        }
-        .bottom {
-            margin-top: 0px;
         }
         span {
             padding-left: 20px;
@@ -79,20 +78,26 @@
         button:active {
             background-color: #ffffff;
         }
-        img:not(.right) {
+        img:not(.image) {
             width: calc(100vw - 80px);
         }
         .scrolling {
             overflow: scroll;
             white-space: nowrap;
             padding: 10px;
-            width: calc(100% - 60px);
-            margin: 20px;
             background-color: lightgray;
+        }
+        nav {
+            z-index: 99;
+            position: fixed;
+            width: calc(100vw - 40px);
+            background-color: rgba(50,50,50,0.6);
+            backdrop-filter: blur(6px);
         }
     </style>
 </head>
 <body>
+    <span>
     <nav>
         <a href="/index">Home</a>
         <a href="/games">Games</a>
@@ -101,9 +106,11 @@
         <a href="/desmos" class="green">Desmos</a>
         <input type="checkbox" id="dark"><span style="padding:0px">Dark Mode</span>
     </nav>
+    </span>
+    <main>
     <div class="top"><h1>DevCraft</h1></div>
     <div class="container">
-        <div class="left" id="left">
+        <div class="about" id="left">
             <h3><b>About DevCraft</b></h3>
             <p>Welcome to DevCraft, a Minecraft Java Edition server made by <a href="https://www.youtube.com/channel/UC7dk5ri6JlFCCTTUySTi02g">DevDoors</a>! Powered entirely by command blocks and hosted on Exaroton, DevCraft offers an adventure for players of all skill levels.</p>
             <p>Explore the heart of a volcano, where parkour challenges await both inside and around it. Explore secret tunnels that lead to underground lava-filled chambers and caves.</p>
@@ -113,13 +120,13 @@
             <p>Join DevDoors and a community of fellow redstoners and other players on DevCraft, where every block holds a new adventure and every command block powers limitless possibilities!</p>
             <h3><a href="/guide"><b>Player Guide & More Info</b></a></h3>
         </div>
-        <img class="right" id="right" src="devcraft/server.png" width="100%" height="100%"></img>
+        <img class="image" id="right" src="devcraft/server.png" width="100%" height="100%"></img>
     </div>
     <div class="center">
         <b>Server Address: </b><span>DevDoors.exaroton.me </span><span><button id="Copy" onclick="copy()">Copy</button></span>
     </div>
     <video src="devcraft/DevCraft.mp4" width="100%" controls></video>
-    <div class="center bottom">
+    <div class="about">
         Rules
         <ul>
             <li>Encourage others</li>
@@ -138,6 +145,7 @@
         <img src="devcraft/volcano.png"></img>
         <img src="devcraft/parkour.png"></img>
     </div>
+    </main>
     <script>
         let scrolling = document.querySelector(".scrolling");
         scrolling.addEventListener("wheel", function(event) {
