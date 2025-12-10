@@ -5,6 +5,12 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="main.css">
     <style>
+        :root {
+            --bg: rgba(255,255,255,0.4);
+        }
+        .dark {
+            --bg: rgba(0,0,0,0.6);
+        }
         body {
             background-image: url('devcraft/server.png');
             background-repeat: no-repeat;
@@ -50,12 +56,9 @@
             border: 1px solid;
             border-radius: 30px;
         }
-        div:not(.container) {
-            background-color: rgba(255,255,255,0.4);
+        div:not(.container), img, video {
+            background-color: var(--bg);
             backdrop-filter: blur(10px);
-        }
-        .dark div:not(.container) {
-            background-color: rgba(0,0,0,0.6);
         }
         video {
             overflow: hidden;
