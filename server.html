@@ -52,7 +52,7 @@
             text-align: center;
             padding: 10px;
         }
-        div, img, video {
+        div:not(.container), img, video {
             border: 1px solid;
             border-radius: 30px;
         }
@@ -97,6 +97,18 @@
             background-color: rgba(50,50,50,0.6);
             backdrop-filter: blur(6px);
         }
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+        td {
+            width: 50%;
+            padding-inline: 20px;
+            overflow: scroll;
+        }
+        .big {
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
@@ -129,16 +141,36 @@
         <b>Server Address: </b><span>DevDoors.exaroton.me </span><span><button id="Copy" onclick="copy()">Copy</button></span>
     </div>
     <video src="devcraft/DevCraft.mp4" width="100%" controls></video>
-    <div class="about">
-        Rules
-        <ul>
-            <li>Encourage others</li>
-            <li>No profanity</li>
-            <li>Be appropriate</li>
-            <li>No hacking/competitive game advantages/unfair client modifications/exploits</li>
-            <li>Have fun</li>
-        </ul>
-        <p style="font-size:15px">A violation of these rules may result in a temporary ban</p>
+    <div class="container">
+        <div class="about">
+            <h2>Rules</h2>
+            <ul>
+                <li>Encourage others</li>
+                <li>No profanity</li>
+                <li>Be appropriate</li>
+                <li>No hacking/competitive game advantages/unfair client modifications/exploits</li>
+                <li>Have fun</li>
+            </ul>
+            <p style="font-size:15px;text-align:center">A violation of these rules may result in a temporary ban</p>
+        </div>
+        <div class="about">
+            <h2>Notes</h2>
+            <table width="100%">
+            <tr>
+                <td>
+                    <p class="big">Owner: <a href="https://www.youtube.com/channel/UC7dk5ri6JlFCCTTUySTi02g">DevDoors</a>
+                    <br>Contact: <a href="mailto:devdoorsyt@gmail.com">devdoorsyt@gmail.com</a></p>
+                    <p class="big">Admin: <a href="https://www.youtube.com/channel/UCoLvVa49qYZRnWvFn7RTjxQ">TurboTech</a>
+                    <br>Contact: <a href="mailto:turbotechyt.official@gmail.com">turbotechyt.official@gmail.com</a></p>
+                </td>
+                <td style="border-left: 1px solid">
+                    Our server is powered entirely off of commands blocks, datapacks, and other built-in, vanilla Minecraft mechanics. We only use mods/plugins for performance and cross-version compatibility, everything else is done through the capabilites of vanilla Minecraft.
+                    <br><br>
+                    DevCraft is not in any way <a href="https://docs.google.com/document/d/1Rd8vkKvpln6uhgO4XIUctWS5VkaxyZRc0h8Bb9GaxLI/view" target="_blank" rel="noopener noreferrer">P2W</a>; DevCoins cannot be exchanged in any way with real-life currency within the server.
+                </td>
+            </tr>
+            </table>
+        </div>
     </div>
     <div class="scrolling">
         <img src="devcraft/lobby.png"></img>
