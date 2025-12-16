@@ -38,6 +38,9 @@ h1,h2,h3 {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.button a {
+    height: 20px;
+}
 nav {
     text-align: center;
     background-color: #333;
