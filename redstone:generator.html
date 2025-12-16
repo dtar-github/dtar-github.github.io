@@ -9,7 +9,7 @@
             color: gray;
         }
         nav {
-            background-color: #7c0000;
+            background-color: rgba(180,0,0,0.6);
         }
         nav a:hover {
             background-color: #e20000;
@@ -28,6 +28,7 @@
         <a href="/redstone:dictionary">Terminology</a>
         <input type="checkbox" id="dark"><span>Dark Mode</span>
     </nav>
+    <main>
     <h1>Redstone Generator</h1>
     <p>Created by <a href="https://www.youtube.com/channel/UC7dk5ri6JlFCCTTUySTi02g">DevDoors</a></p>
     <input type="checkbox" id="usesolid" class="use" data-target="soliddisplay"><span id="soliddisplay" class="hidden"><input type="checkbox" id="solid" disabled> Solid</span><br>
@@ -46,6 +47,7 @@
     <input type="checkbox" id="uselight" class="use" data-target="lightdisplay"><span id="lightdisplay" class="hidden"><input type="checkbox" id="light" disabled> Can Give Off Light</span><br>
     <button onclick="generate()">Generate</button>
     <ul id="list"></ul>
+    </main>
     <script>
         const properties = [
             { name: "Standard Building Block", solid: true, redirect: false, move: true, slip: false, break: false, output: false, comparator: false, observer: false, sticky: false, storage: false, hold: true, bud: false, sound: false, light: 0 },

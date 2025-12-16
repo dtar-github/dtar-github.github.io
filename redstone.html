@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="main.css">
     <style>
         nav {
-            background-color: #7c0000;
+            background-color: rgba(180,0,0,0.6);
         }
         nav a:hover {
             background-color: #e20000;
@@ -45,6 +45,7 @@
         <a href="/redstone:dictionary">Terminology</a>
         <input type="checkbox" id="dark"><span>Dark Mode</span>
     </nav>
+    <main>
     <p style="text-align:center">Hi, I'm DevDoors! I make redstone videos on <a href="https://www.youtube.com/channel/UC7dk5ri6JlFCCTTUySTi02g">YouTube</a>, but I also made some resources on this website to help people with redstone.</p>
     <p style="text-align:center">Also check out my non-redstone website <a href="/index">here</a>.</p>
     <div class="left">
@@ -62,6 +63,7 @@
         <b>Redstone-Ready Lectern:</b>
         <p class="command">/give @s lectern[block_entity_data={id:lectern,Book:{components:{written_book_content:{pages:['"1"','"2"','"3"','"4"','"5"','"6"','"7"','"8"','"9"','"10"','"11"','"12"','"13"','"14"','"15"'],title:"Signal Strengths",author:"DevDoors"}},id:"written_book"}}]</p>
     </div>
+    </main>
     <script>
         document.getElementById('download').addEventListener('click', function() {
             let htmlCode

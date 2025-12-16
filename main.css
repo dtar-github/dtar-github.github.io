@@ -8,6 +8,9 @@
     scrollbar-width: none;
     transition: background-color 0.3s ease, border 0.3s ease, color 0.1s ease-out;
 }
+main {
+    padding-top: 40px;
+}
 a {
     color: var(--link-color);
 }
@@ -43,9 +46,14 @@ h1,h2,h3 {
 }
 nav {
     text-align: center;
-    background-color: #333;
     padding: 10px;
     border-radius: 10px;
+    z-index: 99;
+    margin-bottom: 30px;
+    position: fixed;
+    width: calc(100vw - 40px);
+    background-color: rgba(50,50,50,0.6);
+    backdrop-filter: blur(6px);
 }
 nav a {
     color: white;
