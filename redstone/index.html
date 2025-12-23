@@ -67,7 +67,7 @@
     <script>
         document.getElementById('download').addEventListener('click', function() {
             let htmlCode
-            fetch('/generator')
+            fetch('/generator_download')
                 .then(response => response.text())
                 .then(data => {
                     htmlCode = data;
