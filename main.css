@@ -1,8 +1,12 @@
 :root {
     --link-color: #009;
+    --dev-color: #a00;
+    --craft-color: #060;
 }
 .dark {
     --link-color: #99f;
+    --dev-color: #f77;
+    --craft-color: #7f7;
 }
 * {
     scrollbar-width: none;
@@ -71,15 +75,20 @@ nav span {
 nav a:hover {
     background-color: #555;
     transition: background-color 0.3s;
+    transition: background-image 0.3s;
 }
 .red:hover {
     background-color: #933;
-    transition: background-color 0.3s;
 }
 .green:hover {
     background-color: #392;
-    transition: background-color 0.3s;
 }
+.red.green:hover {
+    background-image: linear-gradient(to right, #b00, #0b0);
+}
+.dev, .craft {padding-left: 0}
+.dev {color: var(--dev-color)}
+.craft {color: var(--craft-color)}
 .desmos {
     background-color: #008c0e;
     color: #ffffff;
