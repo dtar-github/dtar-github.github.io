@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DevCraft: Trial Chambers Expansion Guide</title>
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../main.css">
+    <style>
+        body {
+            background-image: url('../server.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: none;
+        }
+        main {
+            padding-inline: 5%;
+        }
+        h3 {
+            text-decoration: underline;
+            text-align: left;
+        }
+        h2 {
+            font-weight: bold;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            border: none;
+            gap: 20px;
+        }
+        .container, .norm {
+            margin-top: 16px;
+        }
+        div:not(.container, .none) {
+            padding: 16px;
+            overflow: scroll;
+        }
+        div:not(.container, .none), img, table {
+            border: 2px solid gray;
+            border-radius: 16px;
+            background-color: var(--bg);
+            backdrop-filter: blur(10px);
+        }
+        table {
+            width: 100%;
+            margin-top: 16px;
+            border-spacing: 0;
+            overflow: hidden;
+        }
+        td, th {
+            padding: 8px;
+            border-bottom: 1px solid gray;
+        }
+        tr:last-child th, tr:last-child td {
+            border: none;
+        }
+        th {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        hr {
+            margin-block: 40px;
+            border: 1px solid gray;
+        }
+        .center {
+            text-align: center;
+            margin-bottom: 8px;
+            margin-top: 24px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/index">Home</a>
+        <a href="/games">Games</a>
+        <a href="/downloads">Downloads</a>
+        <a class="red green" href="/server">DevCraft</a>
+        <a href="/redstone" class="red">Redstone</a>
+        <a href="/desmos" class="green">Desmos</a>
+        <input type="checkbox" id="dark">
+        <span>Dark Mode</span>
+    </nav>
+    <main>
+        <div class="norm">
+            <h1>Trial Chambers: Expansion</h1>
+            <p>Trial Chambers: Expansion is a dungeon crawler built as an expansion to the Trial Chambers. They are a
+                system of challenging dungeons designed to test player skill and strategy. Each level is structured to
+                push players through increasingly difficult encounters, encouraging thoughtful combat, and
+                risk-versus-reward decision-making.</p>
+            <p>As players progress through the chambers, they face a wide variety of custom enemies, each with unique
+                behaviors, strengths, and mechanics that require adaptation rather than brute force. Encounters are
+                designed to scale in difficulty, ensuring that runs demand stronger gear, positioning, and strategy.</p>
+            <p>Progression in Trial Chambers: Expansion is heavily tied to dungeon completion. Successful runs reward
+                players with powerful gear, upgrades, and rare items that enhance future attempts and open new
+                playstyles.</p>
+            <p>The Trial Chambers serve as both a test and a progression path, rewarding players who are willing to push
+                further, take calculated risks, and master the mechanics of the game. Whether entering for steady
+                progression or attempting high-level challenges, players are constantly encouraged to improve, adapt,
+                and refine their approach as they descend deeper into the chambers.</p>
+            <p class="center"><b>Trial Chambers: Expansion</b> was designed by <a href="https://www.youtube.com/channel/UCoLvVa49qYZRnWvFn7RTjxQ">TurboTech</a> and is part of the <a href="../server"><span class="dev">Dev</span><span class="craft">Craft</span> Server</a></p>
+        </div>
+        <hr>
+        <div class="norm">
+            <h2>Trial Chambers Expansion Guide: Bosses</h2>
+        </div>
+        <div class="container">
+            <div>
+                <h2>The Marionettist</h2>
+                <p>The Marionettist is the final boss of the 3rd level.</p>
+                <h3>Stages</h3>
+                <h4>Stage 1:</h4>
+                <p>Three example minions.</p>
+                <h4>Stage 2:</h4>
+                <p>Three Skirmishers and a Brute.</p>
+                <h4>Stage 3:</h4>
+                <p>Five Forgotten Vanguards.</p>
+                <h4>Stage 4:</h4>
+                <p>The Mage Youngling and its summons.</p>
+                <h4>Stage 5:</h4>
+                <p>Four Forgotten Vanguards, four Skirmishers, two Gloomstep Assassins, and one Brute.</p>
+            </div>
+            <div class="none">
+                <img src="marionettist.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Health:</th>
+                        <td>775hp</td>
+                    </tr>
+                    <tr>
+                        <th>Waves:</th>
+                        <td>5</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>The Geomancer</h2>
+                <p>The Geomancer is the final boss of level 4 and the final form of the Mage Youngling.</p>
+                <h3>Attacks</h3>
+                <h4>Fangs</h4>
+                <p>Summons an array of fangs on nearby players.</p>
+                <h4>Floating Blocks</h4>
+                <p>Raises floating terrain that hurts nearby players.</p>
+            </div>
+            <div class="none">
+                <img src="geomancer.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Health:</th>
+                        <td>100hp</td>
+                    </tr>
+                    <tr>
+                        <th>Fang Attack Strength:</th>
+                        <td>6 Attack Damage</td>
+                    </tr>
+                    <tr>
+                        <th>Floating Block Attack Strength:</th>
+                        <td>9 Attack Damage</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <hr>
+        <div class="norm">
+            <h2>Trial Chambers Expansion Guide: Custom Mobs</h2>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Bogged Lord</h2>
+                <p>The Bogged Lord is a keyholder in the chambers. It is a very tanky mob that shoots strong poison
+                    arrows.
+                    It also has a chance to drop some of its Mud Armor when killed.</p>
+            </div>
+            <div class="none">
+                <img src="bogged_lord.png" width="100%">
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Starlight Skeleton Master</h2>
+                <p>The Starlight Skeleton Master is a keyholder in the chambers. It shoots strong arrows that deal
+                    a lot of knockback.</p>
+            </div>
+            <div class="none">
+                <img src="starlight_skeleton_master.png" width="100%">
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Starlight Skeleton</h2>
+                <p>The Starlight Skeleton is a mob within the chambers. It is a hard hitting mob that is typically found
+                    defending its master. It also has a 1.5% chance to drop a Starlight Sword when killed.</p>
+            </div>
+            <div class="none">
+                <img src="starlight_skeleton.png" width="100%">
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Spider King</h2>
+                <p>The Spider King is a keyholder in the chambers. It is a tanky mob that is typically found among other
+                    spiders.</p>
+            </div>
+            <div class="none">
+                <img src="spider_king.png" width="100%">
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Wither Miner</h2>
+                <p>The Wither Miner is a mob within the chambers and is typically found in large groups.</p>
+            </div>
+            <div class="none">
+                <img src="wither_miner.png" width="100%">
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Illusioner</h2>
+                <p>The illusioner is a keyholder within the chambers. This is an unreleased mob that is within vanilla
+                    Minecraft but cannot be found in survival.</p>
+            </div>
+            <div class="none">
+                <img src="illusioner.png" width="100%">
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Forgotten Vanguard</h2>
+                <p>The Forgotten Vanguard is a mob within the chambers that is one of The Marionettist's puppets. It
+                    also has a 2.5% chance to drop a Vanguard's Shroud.</p>
+            </div>
+            <div class="none">
+                <img src="forgotten_vanguard.png" width="100%">
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Skirmisher</h2>
+                <p>The Skirmisher is a mob within the chambers that is one of The Marionettist's puppets.</p>
+            </div>
+            <div class="none">
+                <img src="skirmisher.png" width="100%">
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Mage Youngling</h2>
+                <p>The Mage Youngling is an apprentice of The Marionettist and later evolves into the Geomancer.</p>
+            </div>
+            <div class="none">
+                <img src="mage_youngling.png" width="100%">
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Gloomstep Assassin</h2>
+                <p>The Gloomstep Assassin is a mob within the chambers that is one of The Marionettist's puppets.</p>
+            </div>
+            <div class="none">
+                <img src="gloomstep_assassin.png" width="100%">
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Brute</h2>
+                <p>The Brute is a mob within the chambers. It is a modified ravager with special abilities and is one of
+                    The Marionettist's puppets.</p>
+            </div>
+            <div class="none">
+                <img src="brute.png" width="100%">
+            </div>
+        </div>
+        <hr>
+        <div class="norm">
+            <h2>Trial Chambers Expansion Guide: Armor</h2>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Leather Armor</h2>
+                <p>Leather armor is a set of normal armor that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="leather_armor.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Defense:</th>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <th>Armor Toughness:</th>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>Knockback Resistance:</th>
+                        <td>0</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Copper Armor</h2>
+                <p>Copper armor is a set of normal armor that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="copper_armor.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Defense:</th>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <th>Armor Toughness:</th>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>Knockback Resistance:</th>
+                        <td>0</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Gold Armor</h2>
+                <p>Gold armor is a set of normal armor that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="gold_armor.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Defense:</th>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <th>Armor Toughness:</th>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>Knockback Resistance:</th>
+                        <td>0</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Chainmail Armor</h2>
+                <p>Chainmail armor is a set of normal armor that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="chainmail_armor.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Defense:</th>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <th>Armor Toughness:</th>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>Knockback Resistance:</th>
+                        <td>0</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Iron Armor</h2>
+                <p>Iron armor is a set of normal armor set that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="iron_armor.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Defense:</th>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <th>Armor Toughness:</th>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>Knockback Resistance:</th>
+                        <td>0</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Diamond Armor</h2>
+                <p>Diamond armor is a set of normal armor that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="diamond_armor.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Defense:</th>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <th>Armor Toughness:</th>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <th>Knockback Resistance:</th>
+                        <td>0</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Netherite Armor</h2>
+                <p>Netherite armor is a set of normal armor that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="netherite_armor.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Defense:</th>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <th>Armor Toughness:</th>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <th>Knockback Resistance:</th>
+                        <td>4</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Mud Armor</h2>
+                <p>Mud armor is obtained from killing a Bogged Lord. Each armor piece has a 1.5% chance to drop when a
+                    Bogged Lord is killed. Each piece comes pre-enchanted with thorns III and protection VII.</p>
+                <p>*Protection 7 is accounted for in the defense stat.</p>
+            </div>
+            <div class="none">
+                <img src="mud_armor.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Defense:</th>
+                        <td>25.2</td>
+                    </tr>
+                    <tr>
+                        <th>Armor Toughness:</th>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>Knockback Resistance:</th>
+                        <td>0</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Vanguard's Shroud</h2>
+                <p>The Vanguard's Shroud has no armor stats but grants you regeneration and strength 2. It has a 2.5%
+                    chance to drop from a Forgotten Vanguard.</p>
+            </div>
+            <div class="none">
+                <img src="vanguard_shroud.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Defense:</th>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>Armor Toughness:</th>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>Knockback Resistance:</th>
+                        <td>0</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <hr>
+        <div class="norm">
+            <h2>Trial Chambers Expansion Guide: Weapons</h2>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Wooden Sword</h2>
+                <p>The wooden sword is a normal weapon that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="wood_sword.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Attack Damage:</th>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <th>Attack Speed:</th>
+                        <td>1.6</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Wooden Axe</h2>
+                <p>The wooden axe is a normal weapon that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="wood_axe.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Attack Damage:</th>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <th>Attack Speed:</th>
+                        <td>0.8</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Golden Sword</h2>
+                <p>The golden sword is a normal weapon that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="gold_sword.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Attack Damage:</th>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <th>Attack Speed:</th>
+                        <td>1.6</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Golden Axe</h2>
+                <p>The golden axe is a normal weapon that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="gold_axe.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Attack Damage:</th>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <th>Attack Speed:</th>
+                        <td>1</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Stone Sword</h2>
+                <p>The stone sword is a normal weapon that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="stone_sword.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Attack Damage:</th>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <th>Attack Speed:</th>
+                        <td>1.6</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Stone Axe</h2>
+                <p>The stone axe is a normal weapon that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="stone_axe.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Attack Damage:</th>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <th>Attack Speed:</th>
+                        <td>0.8</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Copper Sword</h2>
+                <p>The copper sword is a normal weapon that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="copper_sword.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Attack Damage:</th>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <th>Attack Speed:</th>
+                        <td>1.6</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Copper Axe</h2>
+                <p>The copper axe is a normal weapon that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="copper_axe.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Attack Damage:</th>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <th>Attack Speed:</th>
+                        <td>0.8</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Iron Sword</h2>
+                <p>The iron sword is a normal weapon that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="iron_sword.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Attack Damage:</th>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <th>Attack Speed:</th>
+                        <td>1.6</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Iron Axe</h2>
+                <p>The iron axe is a normal weapon that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="iron_axe.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Attack Damage:</th>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <th>Attack Speed:</th>
+                        <td>0.9</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Diamond Sword</h2>
+                <p>The diamond sword is a normal weapon that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="diamond_sword.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Attack Damage:</th>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <th>Attack Speed:</th>
+                        <td>1.6</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Diamond Axe</h2>
+                <p>The diamond axe is a normal weapon that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="diamond_axe.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Attack Damage:</th>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <th>Attack Speed:</th>
+                        <td>1</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Netherite Sword</h2>
+                <p>The netherite sword is a normal weapon that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="netherite_sword.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Attack Damage:</th>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <th>Attack Speed:</th>
+                        <td>1.6</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Netherite Axe</h2>
+                <p>The netherite axe is a normal weapon that has no special abilities.</p>
+            </div>
+            <div class="none">
+                <img src="netherite_axe.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Attack Damage:</th>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <th>Attack Speed:</th>
+                        <td>1</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div>
+                <h2>Starlight Sword</h2>
+                <p>The Starlight Sword is an iron sword that is obtained by killing the Starlight Skeleton. It has a
+                    1.5% drop chance and comes pre-enchanted with sharpness 1.</p>
+            </div>
+            <div class="none">
+                <img src="starlight_sword.png" width="100%">
+                <table>
+                    <tr>
+                        <th>Attack Damage:</th>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <th>Attack Speed:</th>
+                        <td>1.6</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="norm" style="text-align: center">
+            <b>Trial Chambers: Expansion</b> was designed by <a href="https://www.youtube.com/channel/UCoLvVa49qYZRnWvFn7RTjxQ">TurboTech</a> and is part of the <a href="../server"><span class="dev">Dev</span><span class="craft">Craft</span> Server</a>
+        </div>
+    </main>
+    <script src="../../darkmode.js"></script>
+</body>
+</html>

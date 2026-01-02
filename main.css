@@ -2,11 +2,13 @@
     --link-color: #009;
     --dev-color: #a00;
     --craft-color: #060;
+    --bg: rgba(255,255,255,0.4);
 }
 .dark {
     --link-color: #99f;
     --dev-color: #f77;
     --craft-color: #7f7;
+    --bg: rgba(0,0,0,0.6);
 }
 * {
     scrollbar-width: none;
