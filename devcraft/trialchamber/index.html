@@ -59,13 +59,20 @@
             background-color: rgba(0, 0, 0, 0.2);
         }
         hr {
-            margin-block: 40px;
-            border: 1px solid gray;
+            margin-block: 24px;
+            border: 8px solid rgba(100, 100, 100, 0.6);
+            width: calc(100vw + 60px);
+            position: relative;
+            left: calc(-5vw - 20px);
         }
         .center {
             text-align: center;
             margin-bottom: 8px;
             margin-top: 24px;
+        }
+        .scroll {
+            position: sticky;
+            top: 64px;
         }
     </style>
 </head>
@@ -119,18 +126,20 @@
                 <h4>Stage 5:</h4>
                 <p>Four Forgotten Vanguards, four Skirmishers, two Gloomstep Assassins, and one Brute.</p>
             </div>
-            <div class="none">
-                <img src="marionettist.png" width="100%">
-                <table>
-                    <tr>
-                        <th>Health:</th>
-                        <td>775hp</td>
-                    </tr>
-                    <tr>
-                        <th>Waves:</th>
-                        <td>5</td>
-                    </tr>
-                </table>
+            <div class="none" style="position:relative">
+                <div class="none scroll">
+                    <img src="marionettist.png" width="100%">
+                    <table>
+                        <tr>
+                            <th>Health:</th>
+                            <td>775hp</td>
+                        </tr>
+                        <tr>
+                            <th>Waves:</th>
+                            <td>5</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="container">
@@ -143,22 +152,24 @@
                 <h4>Floating Blocks</h4>
                 <p>Raises floating terrain that hurts nearby players.</p>
             </div>
-            <div class="none">
-                <img src="geomancer.png" width="100%">
-                <table>
-                    <tr>
-                        <th>Health:</th>
-                        <td>100hp</td>
-                    </tr>
-                    <tr>
-                        <th>Fang Attack Strength:</th>
-                        <td>6 Attack Damage</td>
-                    </tr>
-                    <tr>
-                        <th>Floating Block Attack Strength:</th>
-                        <td>9 Attack Damage</td>
-                    </tr>
-                </table>
+            <div class="none" style="position:relative">
+                <div class="none scroll">
+                    <img src="geomancer.png" width="100%">
+                    <table>
+                        <tr>
+                            <th>Health:</th>
+                            <td>100hp</td>
+                        </tr>
+                        <tr>
+                            <th>Fang Attack Strength:</th>
+                            <td>6 Attack Damage</td>
+                        </tr>
+                        <tr>
+                            <th>Floating Block Attack Strength:</th>
+                            <td>9 Attack Damage</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
         <hr>
@@ -172,8 +183,10 @@
                     arrows.
                     It also has a chance to drop some of its Mud Armor when killed.</p>
             </div>
-            <div class="none">
+            <div class="none" style="position:relative">
+                <div class="none scroll">
                 <img src="bogged_lord.png" width="100%">
+                </div>
             </div>
         </div>
         <div class="container">
@@ -182,8 +195,10 @@
                 <p>The Starlight Skeleton Master is a keyholder in the chambers. It shoots strong arrows that deal
                     a lot of knockback.</p>
             </div>
-            <div class="none">
+            <div class="none" style="position:relative">
+                <div class="none scroll">
                 <img src="starlight_skeleton_master.png" width="100%">
+                </div>
             </div>
         </div>
         <div class="container">
@@ -192,8 +207,10 @@
                 <p>The Starlight Skeleton is a mob within the chambers. It is a hard hitting mob that is typically found
                     defending its master. It also has a 1.5% chance to drop a Starlight Sword when killed.</p>
             </div>
-            <div class="none">
+            <div class="none" style="position:relative">
+                <div class="none scroll">
                 <img src="starlight_skeleton.png" width="100%">
+                </div>
             </div>
         </div>
         <div class="container">
@@ -202,8 +219,10 @@
                 <p>The Spider King is a keyholder in the chambers. It is a tanky mob that is typically found among other
                     spiders.</p>
             </div>
-            <div class="none">
+            <div class="none" style="position:relative">
+                <div class="none scroll">
                 <img src="spider_king.png" width="100%">
+                </div>
             </div>
         </div>
         <div class="container">
@@ -211,8 +230,10 @@
                 <h2>Wither Miner</h2>
                 <p>The Wither Miner is a mob within the chambers and is typically found in large groups.</p>
             </div>
-            <div class="none">
+            <div class="none" style="position:relative">
+                <div class="none scroll">
                 <img src="wither_miner.png" width="100%">
+                </div>
             </div>
         </div>
         <div class="container">
@@ -221,8 +242,10 @@
                 <p>The illusioner is a keyholder within the chambers. This is an unreleased mob that is within vanilla
                     Minecraft but cannot be found in survival.</p>
             </div>
-            <div class="none">
+            <div class="none" style="position:relative">
+                <div class="none scroll">
                 <img src="illusioner.png" width="100%">
+                </div>
             </div>
         </div>
         <div class="container">
@@ -231,8 +254,10 @@
                 <p>The Forgotten Vanguard is a mob within the chambers that is one of The Marionettist's puppets. It
                     also has a 2.5% chance to drop a Vanguard's Shroud.</p>
             </div>
-            <div class="none">
+            <div class="none" style="position:relative">
+                <div class="none scroll">
                 <img src="forgotten_vanguard.png" width="100%">
+                </div>
             </div>
         </div>
         <div class="container">
@@ -240,8 +265,10 @@
                 <h2>Skirmisher</h2>
                 <p>The Skirmisher is a mob within the chambers that is one of The Marionettist's puppets.</p>
             </div>
-            <div class="none">
+            <div class="none" style="position:relative">
+                <div class="none scroll">
                 <img src="skirmisher.png" width="100%">
+                </div>
             </div>
         </div>
         <div class="container">
@@ -249,8 +276,10 @@
                 <h2>Mage Youngling</h2>
                 <p>The Mage Youngling is an apprentice of The Marionettist and later evolves into the Geomancer.</p>
             </div>
-            <div class="none">
+            <div class="none" style="position:relative">
+                <div class="none scroll">
                 <img src="mage_youngling.png" width="100%">
+                </div>
             </div>
         </div>
         <div class="container">
@@ -258,8 +287,10 @@
                 <h2>Gloomstep Assassin</h2>
                 <p>The Gloomstep Assassin is a mob within the chambers that is one of The Marionettist's puppets.</p>
             </div>
-            <div class="none">
+            <div class="none" style="position:relative">
+                <div class="none scroll">
                 <img src="gloomstep_assassin.png" width="100%">
+                </div>
             </div>
         </div>
         <div class="container">
@@ -268,8 +299,10 @@
                 <p>The Brute is a mob within the chambers. It is a modified ravager with special abilities and is one of
                     The Marionettist's puppets.</p>
             </div>
-            <div class="none">
+            <div class="none" style="position:relative">
+                <div class="none scroll">
                 <img src="brute.png" width="100%">
+                </div>
             </div>
         </div>
         <hr>
