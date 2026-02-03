@@ -147,3 +147,7 @@ nav a:hover {
     backdrop-filter: blur(3px);
     color: #000;
 }
+.erosion {
+    background-color: #666;
+    color: #ec4;
+}
