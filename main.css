@@ -37,6 +37,11 @@ a {
 h1,h2,h3 {
     text-align: center;
 }
+.container {
+    display: grid;
+    border: none;
+    gap: 20px;
+}
 .button {
     display: inline-block;
     padding: 10px 20px;
@@ -91,6 +96,13 @@ nav a:hover {
 .dev, .craft {padding-left: 0}
 .dev {color: var(--dev-color)}
 .craft {color: var(--craft-color)}
+.music {
+    background-color: #60b;
+    color: #fff;
+}
+.music:hover {
+    background-color: #33b;
+}
 .desmos {
     background-color: #008c0e;
     color: #ffffff;
