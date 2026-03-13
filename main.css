@@ -1,10 +1,16 @@
 :root {
+    --primary: #000;
+    --secondary: #fff;
+    --tertiary: #aaa;
     --link-color: #009;
     --dev-color: #a00;
     --craft-color: #060;
     --bg: rgba(255,255,255,0.4);
 }
 .dark {
+    --primary: #fff;
+    --secondary: #000;
+    --tertiary: #444;
     --link-color: #99f;
     --dev-color: #f77;
     --craft-color: #7f7;
@@ -96,13 +102,6 @@ nav a:hover {
 .dev, .craft {padding-left: 0}
 .dev {color: var(--dev-color)}
 .craft {color: var(--craft-color)}
-.music {
-    background-color: #60b;
-    color: #fff;
-}
-.music:hover {
-    background-color: #33b;
-}
 .desmos {
     background-color: #008c0e;
     color: #ffffff;
