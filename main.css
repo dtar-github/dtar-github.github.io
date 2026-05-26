@@ -96,7 +96,11 @@ nav a:hover {
 .green:hover {
     background-color: #392;
 }
+.purple:hover {
+    background-color: #82d;
+}
 .red.green:hover {
+    background-color: #7637;
     background-image: linear-gradient(to right, #b00, #0b0);
 }
 .dev, .craft {padding-left: 0}
