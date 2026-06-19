@@ -163,7 +163,7 @@ nav a:hover {
     color: #000;
 }
 .erosion {
-    background-color: #666;
+    background-color: #557;
     color: #ec4;
 }
 .sizecomparison {
@@ -173,4 +173,8 @@ nav a:hover {
 .circuit {
     background-color: #888;
     color: #ff0;
+}
+.particle {
+    background-color: #202;
+    color: #5f5;
 }
