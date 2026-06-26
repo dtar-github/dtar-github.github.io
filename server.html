@@ -47,16 +47,21 @@
             text-align: center;
             padding: 10px;
         }
-        div:not(.container), img, video {
+        div:not(.container), img, video, iframe {
             border: 1px solid;
             border-radius: 30px;
         }
-        div:not(.container), img, video {
+        div:not(.container), img, video, iframe {
             background-color: var(--bg);
             backdrop-filter: blur(10px);
         }
         video {
             overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            height: auto;
         }
         span {
             padding-left: 20px;
@@ -186,6 +191,7 @@
             <iframe width=100% height=100% src="https://devcraft.instatus.com" style="border:none"></iframe>
         </div>
     </div>
+    <iframe src="https://www.youtube.com/embed/hS2bttIpQoM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </main>
     <script>
         let scrolling = document.querySelector(".scrolling");
