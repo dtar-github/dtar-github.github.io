@@ -187,28 +187,28 @@
                 <p><li><code>/trigger help</code> -- Help menu</li></p>
             </ul>
         </div>
-        <div class="about" style="padding:0px;overflow:hidden;min-height:600px">
+        <div class="about" style="padding:0px;overflow:hidden">
             <iframe width=100% height=100% src="https://devcraft.instatus.com" style="border:none"></iframe>
         </div>
     </div>
     <iframe src="https://www.youtube.com/embed/hS2bttIpQoM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </main>
     <script>
-        let scrolling = document.querySelector(".scrolling");
+        let scrolling = document.querySelector(".scrolling")
         scrolling.addEventListener("wheel", function(event) {
-            scrolling.scrollLeft += event.deltaY; 
-            event.preventDefault();
-        });
+            scrolling.scrollLeft += event.deltaY
+            event.preventDefault()
+        })
         function copy() {
             navigator.clipboard.writeText("DevDoors.exaroton.me")
         }
-        var left = document.getElementById("left");
-        var right = document.getElementById("right");
+        var left = document.getElementById("left")
+        var right = document.getElementById("right")
         function height() {
-            left.style.height = (right.offsetHeight - 40) + "px";
+            left.style.height = (right.offsetHeight - 40) + "px"
         }
-        height();
-        window.onresize = height;
+        height()
+        window.onresize = height
         bgimages = ["server.png", "lobby.png", "games.png", "skyblock1.png", "skyblock2.png", "volcano.png", "parkour.png"]
         document.body.style.backgroundImage = `url('devcraft/${bgimages[Math.floor(Math.random()*bgimages.length)]}')`
     </script>
