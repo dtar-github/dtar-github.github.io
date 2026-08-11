@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>dtar Music</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        h1,h2 {
+            text-align: left;
+        }
+        main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border: none;
+            gap: 20px;
+            height: calc(100vh - 56px);
+        }
+        .content {
+            margin-left: 50px;
+            overflow-y: scroll;
+        }
+        .right {
+            margin-top: 16px;
+            text-align: center;
+        }
+        hr {
+            margin-left: -35px;
+        }
+        .list {
+            padding-left: 16px;
+            border-left: #000 solid;
+        }
+        iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            height: auto;
+        }
+        img {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/index">Home</a>
+        <a href="/games">Games</a>
+        <a href="/downloads">Downloads</a>
+        <a class="red green" href="/server">DevCraft</a>
+        <a href="/redstone" class="red">Redstone</a>
+        <a href="/desmos" class="green">Desmos</a>
+        <input type="checkbox" id="dark"><span>Dark Mode</span>
+    </nav>
+    <main>
+    <div class="content">
+        <h1>dtar's Music ♪</h1>
+        <p>
+            Listen on:
+            <br>
+            <a href="https://open.spotify.com/artist/4K2OkuDFiMjN7mGk7wepgA" class="button" style="background-color:#0d6;color:#111">Spotify</a>
+            <a href="https://music.apple.com/us/artist/dtar/6799114476" class="button" style="background-color:#f56;color:#fff">Apple Music</a>
+            <a href="https://music.youtube.com/playlist?list=OLAK5uy_lfUj3PSfCGaxJS4Fe0woA3s2e3G4sy_RE" class="button" style="background-color:#f03;color:#fff">YouTube Music</a>
+            <a href="https://music.amazon.com/artists/B0HDJ69X66/dtar" class="button" style="background-color:#0ed;color:#111">Amazon Music</a>
+            <a href="https://tidal.com/artist/84089649" class="button" style="background-color:#111;color:#eee">TIDAL</a>
+            <a href="https://www.pandora.com/artist/dtar/AR3Xp55q69VhgXK" class="button" style="background-color:#27e;color:#fff">Pandora</a>
+            <span style="padding-inline-start:16px">And more!</span>
+        </p>
+        <hr>
+        <h2>Latest Release</h2>
+        <a href="https://www.youtube.com/playlist?list=OLAK5uy_n9C1lgazpdDWjA3NS5FidcdOM3riuT82U"><img src="https://i.scdn.co/image/ab67616d00001e0294a29ed43d71d13154774819"></a>
+        <p>Album: <a href="https://www.youtube.com/playlist?list=OLAK5uy_n9C1lgazpdDWjA3NS5FidcdOM3riuT82U">Sprinting Through the Mud</a></p>
+        <div class="list">
+            <p>Spawnlight (2:30)</p>
+            <p>DevCraft Theme (1:57)</p>
+            <p>Crossing Trails (1:35)</p>
+            <p>Wolf Beach (3:00)</p>
+            <p>Mirrored Curiosity (4:30)</p>
+            <p>Trial Chambers: Expansion (2:30)</p>
+            <p>Blue Forest (2:30)</p>
+            <p>Glittering Glowstone (2:36)</p>
+            <p>Sharp Droplets (3:24)</p>
+            <p>Buried Gemstones (1:56)</p>
+            <p>Crossing Trails - Piano (2:00)</p>
+        </div>
+    </div>
+    <div class="right">
+        <div>
+            <iframe src="https://www.youtube.com/embed/videoseries?si=C2fvdvvGIR5YPBtq&amp;list=PLgKBYFmXo5ngtgt3XoOcTKr_Bm651Vdpi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <p><a target="_blank" href="https://www.youtube.com/playlist?list=PLgKBYFmXo5ngtgt3XoOcTKr_Bm651Vdpi">View playlist on YouTube</a></p>
+        </div>
+    </div>
+    </main>
+    <script src="darkmode.js"></script>
+</body>
+</html>
