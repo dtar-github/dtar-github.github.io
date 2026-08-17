@@ -66,9 +66,8 @@ nav {
     padding: 10px;
     border-radius: 10px;
     z-index: 99;
-    margin-bottom: 30px;
     position: fixed;
-    width: calc(100vw - 40px);
+    width: calc(100vw - 36px);
     background-color: rgba(50,50,50,0.6);
     backdrop-filter: blur(6px);
 }
